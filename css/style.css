@@ -1,0 +1,113 @@
+body {
+	-webkit-user-select: none;
+	-webkit-overflow-scrolling : touch;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: all 1s ease-in-out;
+}
+
+.content {
+	padding-top: 0px;
+	overflow-x: hidden;
+}
+
+button.hamburger {
+	font-size: 24px !important;
+}
+
+button.plus {
+	font-size: 24px;
+}
+
+li.slide {
+	background: #fff;
+	z-index: 2;
+	padding: 24px 20px;
+	font-size: 16px;
+	-webkit-transform: translateZ(0);
+	/*-moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;*/
+}
+
+.trans-slide {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+  	-o-transition: all .3s ease-in-out;
+  	transition: all .3s ease-in-out;
+}
+
+.contact {
+	border: none;
+	position: relative;
+	background: #ccc;
+}
+
+.list li:first-child {
+	border-top: none;
+}
+
+.option {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 100%;
+	width: 21%;
+	background: #f04d4d;
+	z-index: 1;
+}
+
+.option i {
+	font-size: 28px;
+	color: #fff;
+	padding: 20px 24px;
+}
+
+.sms {
+	right: 21%;
+	background: #e88d3c;
+}
+
+.phone {
+	right: 42%;
+	background: #62da62;
+}
+
+.mail {
+	right: 63%;
+	background: #57bcdd;
+}
+
+.custom-block {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 21%;
+	background: #1e86cc;
+	z-index: 1;
+}
+
+.custom-block i {
+	font-size: 28px;
+	color: #fff;
+	padding: 20px 22px;
+}
+
+#custom-block-two {
+	left: 21%;
+	background: #44c8bb;
+}
+
+#custom-block-three {
+	left: 42%;
+	background: #00baed;
+}
+
+#custom-block-four {
+	left: 63%;
+	background: #9b83dd;
+}
+
+.dark-block {
+	background: #ccc;
+}

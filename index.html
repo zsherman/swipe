@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Swipe</title>
+
+		<!-- Sets initial viewport load and disables zooming	-->
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!-- Set Apple icons for when prototype is saved to home screen -->
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png">
+
+		<script src="js/jquery.js"></script>
+
+		<!-- Include the base Snap.js CSS -->
+		<link rel="stylesheet" href="css/snap.css">
+
+		<!-- Include the compiled Ratchet CSS -->
+		<link rel="stylesheet" href="css/ratchet.css">
+
+		<!-- Include the compiled Ratchet JS -->
+		<script src="js/ratchet.js"></script>
+
+		<link rel="stylesheet" href="css/ionicons.css">
+		<link rel="stylesheet" href="css/style.css">
+		<script src="https://trigger.io/catalyst/target/target-script-min.js#70AEC817-0FAC-435D-95FC-062EA3E5215E"></script>
+
+    	<script src="js/fastclick.js"></script>
+		<script src="js/snap.js"></script>
+		<script src="js/hammer.js"></script>
+		<script src="js/hammer-jquery.js"></script>
+		<script src="js/main.js"></script>
+	</head>
+	<body>
+	
+	<div class="snap-drawers">
+		<div class="snap-drawer snap-drawer-left" id="left-drawer">
+			<ul class="list">
+				<li class="list-divider">Groups</li>
+			    <li>Group 1 <span class="chevron"></span></li>
+			    <li>Group 2 <span class="chevron"></span></li>
+			    <li>Group 3 <span class="chevron"></span></li>
+			    <li>Group 4 <span class="chevron"></span></li>
+			    <li>Group 5 <span class="chevron"></span></li>
+			    <li class="list-divider">More Groups</li>
+			    <li>Group 6 <span class="chevron"></span></li>
+			    <li>Group 7 <span class="chevron"></span></li>
+			    <li>Group 8 <span class="chevron"></span></li>
+			    <li>Group 9 <span class="chevron"></span></li>
+			    <li>Group 10 <span class="chevron"></span></li>
+			</ul>
+		</div>
+		<div class="snap-drawer snap-drawer-right" id="right-drawer">
+			<ul class="list">
+			  <li>List item 1 <span class="chevron"></span></li>
+			  <li>List item 2 <span class="chevron"></span></li>
+			  <li>List item 3 <span class="chevron"></span></li>
+			  <li>List item 4 <span class="chevron"></span></li>
+			  <li>List item 5 <span class="chevron"></span></li>
+			  <li>List item 6 <span class="chevron"></span></li>
+			  <li>List item 7 <span class="chevron"></span></li>
+			  <li>List item 8 <span class="chevron"></span></li>
+			  <li>List item 9 <span class="chevron"></span></li>
+			  <li>List item 10 <span class="chevron"></span></li>
+			  <li>List item 1 <span class="chevron"></span></li>
+			  <li>List item 12 <span class="chevron"></span></li>
+			  <li>List item 13 <span class="chevron"></span></li>
+			  <li>List item 14 <span class="chevron"></span></li>
+			  <li>List item 15 <span class="chevron"></span></li>
+			  <li>List item 16 <span class="chevron"></span></li>
+			  <li>List item 17 <span class="chevron"></span></li>
+			  <li>List item 18 <span class="chevron"></span></li>
+			  <li>List item 19 <span class="chevron"></span></li>
+			  <li>List item 20 <span class="chevron"></span></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="content" class="snap-content">
+	
+		<!-- Make sure all your bars are the first things in your <body> -->
+		<header class="bar-title">
+			<button class="button button-icon icon ion-navicon hamburger" id="toggle-left"></button>
+			<h1 class="title">Swipe</h1>
+			<button class="button button-icon icon ion-navicon ion-plus plus" id="add-contact"></button>
+		</header>
+	
+		<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+		<div class="content" id="main-content">
+	
+			<ul class="list" id="contact-list">
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact" id="first">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				
+			</ul>
+	
+		</div>
+	</div>
+	<script src="js/app.js"></script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>		
+    </body>
+</html>
