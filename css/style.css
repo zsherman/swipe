@@ -24,9 +24,6 @@ li.slide {
 	padding: 24px 20px;
 	font-size: 16px;
 	-webkit-transform: translateZ(0);
-	/*-moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;*/
 }
 
 .trans-slide {
@@ -40,6 +37,9 @@ li.slide {
 	border: none;
 	position: relative;
 	background: #ccc;
+	transition: all 0.2s ease-out;
+	moz-transition: all 0.2s ease-out;
+  	-o-transition: all 0.2s ease-out;
 }
 
 .list li:first-child {
@@ -114,4 +114,41 @@ li.slide {
 
 #settings-modal .content {
 	padding-top: 20px;
+}
+
+/*.new-item {
+  max-height: 0;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -webkit-animation: growHeight 0.2s ease forwards;
+}
+
+@-webkit-keyframes growHeight {
+  to { 
+    max-height: 69px;
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+*/
+.new-item {
+  max-height: 0;
+  opacity: 0;
+  -webkit-transform: translateX(-300px);
+  -webkit-animation: 
+    openSpace 0.2s ease forwards,
+    moveIn 0.3s 0.2s ease forwards;
+}
+
+@-webkit-keyframes openSpace {
+  to { 
+    max-height: 69px;
+  }
+}
+
+@-webkit-keyframes moveIn {
+  to { 
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
 }
