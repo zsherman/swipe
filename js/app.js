@@ -94,16 +94,17 @@ window.addEventListener('load', function() {
 	    };
     });
 
+    $('.content').on('tap', '.settings', function(ev) {
+
+    });
+
+
     $('.bar-title').on('tap', '#add-contact', function(ev) {
     	forge.contact.select(
 			function(contact) {
-				// var newContact = "<div class='contact'><li class='slide'><span class='chevron'></span></li</div>";
-				// $('ul').append(newContact);
-				// forge.logging.info(contact);
 				var newContact = template(contact);
-				$('ul').append(newContact);
+				$('ul').last().append(newContact);
 				$('ul li').last().animate({ scrollTop: 0}, 300);
-				// $('ul li').last().prepend('<strong>' + contact.name.formatted + '</strong>');
 			},
 
 			function(content) {

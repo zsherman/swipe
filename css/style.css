@@ -103,11 +103,15 @@ li.slide {
 	background: #00baed;
 }
 
-#custom-block-four {
+.settings {
 	left: 63%;
 	background: #9b83dd;
 }
 
 .dark-block {
 	background: #ccc;
+}
+
+#settings-modal .content {
+	padding-top: 20px;
 }
