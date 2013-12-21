@@ -30,8 +30,8 @@
 
 		<link rel="stylesheet" href="css/ionicons.css">
 		<link rel="stylesheet" href="css/style.css">
-		<script src="https://trigger.io/catalyst/target/target-script-min.js#70AEC817-0FAC-435D-95FC-062EA3E5215E"></script>
-
+		<script src="https://trigger.io/catalyst/target/target-script-min.js#2078118B-1409-49DC-AFD8-7B1C8BA19E9B"></script>
+		<script src="js/handlebars.js"></script>
     	<script src="js/fastclick.js"></script>
 		<script src="js/snap.js"></script>
 		<script src="js/hammer.js"></script>
@@ -96,7 +96,8 @@
 		<div class="content" id="main-content">
 	
 			<ul class="list" id="contact-list">
-				<div class="contact">
+				
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -111,7 +112,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -151,7 +152,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -176,7 +177,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -191,7 +192,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -216,7 +217,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -231,7 +232,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -256,7 +257,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -271,7 +272,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -296,7 +297,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -311,7 +312,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -336,7 +337,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -351,7 +352,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -376,7 +377,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -391,7 +392,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -416,7 +417,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -431,7 +432,7 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -456,7 +457,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="contact">
+				<div class="contact" id="first">
 					<div class="custom" style="display: none">
 						<div class="custom-block">
 							<i class="icon ion-social-twitter"></i>
@@ -471,7 +472,47 @@
 							<i class="icon ion-ios7-cog"></i>
 						</div>
 					</div>
-					<li class="slide">
+					<li class="slide trans-slide">
+							<strong>Sonny Byrd</strong>
+							<span class="chevron"></span>
+					</li>
+					<div class="utilities" style="display: none">
+						<a href="mailto:sonny.byrd@gmail.com">
+							<div class="option mail">
+								<i class="icon ion-ios7-filing"></i>
+							</div>
+						</a>
+						<a href="tel://0442059840">
+							<div class="option phone">
+								<i class="icon ion-ios7-telephone"></i>
+							</div>
+						</a>
+						<a href="sms:123456789">
+							<div class="option sms">
+								<i class="icon ion-ios7-chatbubble"></i>
+							</div>
+						</a>
+						<div class="option delete">
+							<i class="icon ion-ios7-close-outline"></i>
+						</div>
+					</div>
+				</div>
+				<div class="contact" id="first">
+					<div class="custom" style="display: none">
+						<div class="custom-block">
+							<i class="icon ion-social-twitter"></i>
+						</div>
+						<div class="custom-block" id="custom-block-two">
+							<i class="icon ion-calendar"></i>
+						</div>
+						<div class="custom-block" id="custom-block-three">
+							<i class="icon ion-social-skype"></i>
+						</div>
+						<div class="custom-block" id="custom-block-four">
+							<i class="icon ion-ios7-cog"></i>
+						</div>
+					</div>
+					<li class="slide trans-slide">
 							<strong>Sonny Byrd</strong>
 							<span class="chevron"></span>
 					</li>
@@ -501,7 +542,50 @@
 	
 		</div>
 	</div>
+	<script id="contact-template" type="text/x-handlebars-template">
+	  <div class="contact" id="first">
+	  	<div class="custom" style="display: none">
+	  		<div class="custom-block">
+	  			<i class="icon ion-social-twitter"></i>
+	  		</div>
+	  		<div class="custom-block" id="custom-block-two">
+	  			<i class="icon ion-calendar"></i>
+	  		</div>
+	  		<div class="custom-block" id="custom-block-three">
+	  			<i class="icon ion-social-skype"></i>
+	  		</div>
+	  		<div class="custom-block" id="custom-block-four">
+	  			<i class="icon ion-ios7-cog"></i>
+	  		</div>
+	  	</div>
+	  	<li class="slide trans-slide">
+	  			<strong>{{displayName}}</strong>
+	  			<span class="chevron"></span>
+	  	</li>
+	  	<div class="utilities" style="display: none">
+	  		<a href="mailto:{{emails.[0].value}}">
+	  			<div class="option mail">
+	  				<i class="icon ion-ios7-filing"></i>
+	  			</div>
+	  		</a>
+	  		<a href="tel://{{phoneNumbers.[0].value}}">
+	  			<div class="option phone">
+	  				<i class="icon ion-ios7-telephone"></i>
+	  			</div>
+	  		</a>
+	  		<a href="sms:{{phoneNumbers.[0].value}}">
+	  			<div class="option sms">
+	  				<i class="icon ion-ios7-chatbubble"></i>
+	  			</div>
+	  		</a>
+	  		<div class="option delete">
+	  			<i class="icon ion-ios7-close-outline"></i>
+	  		</div>
+	  	</div>
+	  </div>
+	</script>
 	<script src="js/app.js"></script>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>		
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	</script>		
     </body>
 </html>
