@@ -43,6 +43,11 @@ ul {
 	background: #ccc;
 }
 
+.contact p {
+	color: #a0a8ae;
+	font-size: 12px;
+}
+
 .list li:first-child {
 	border-top: none;
 }

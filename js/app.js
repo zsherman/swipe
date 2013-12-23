@@ -19,8 +19,10 @@ window.addEventListener('load', function() {
 	var template = Handlebars.compile(source);
     var hammertime = new Hammer($(".content")[0], { drag_lock_to_axis: true});
     var titlebar = new Hammer($(".bar-title"));
+    var snapmenu = new Hammer($(".snap-drawers"));
 	var startX, offsetX;
 	var startY, offsetY;
+
 
 	$('.content').on('dragstart', '.slide', function(e) {
 		$(this).removeClass('trans-slide');
@@ -92,7 +94,7 @@ window.addEventListener('load', function() {
 			forge.logging.info(diffY);
 			$(this).offset({ top: diffY });
 			//$(this).css("-webkit-transform", "translate3d(0, "+diffY+"px, 0)");
-
+			//this.closest.contact.margin-top = 60px;
 		};
 	});
 
@@ -125,7 +127,9 @@ window.addEventListener('load', function() {
     });
 
     $('.content').on('drag', function(event) {
-    	event.gesture.preventDefault();
+    	if(!Hammer.utils.isVertical(event.gesture.direction)) {
+    		event.gesture.preventDefault();
+    	};
     });
 
     $('.content').on('tap', '.delete', function(ev) {
@@ -139,6 +143,12 @@ window.addEventListener('load', function() {
 	    };
     });
 
+    $('.content').on('tap', '.calendar', function(ev) {
+    	// Bring up modal
+    	// Add form
+    	// Submit event info to Google JS
+    });
+
     $('.content').on('tap', '.settings', function(ev) {
 
     });
@@ -150,13 +160,28 @@ window.addEventListener('load', function() {
 			function(contact) {
 				var newContact = template(contact);
 				$('ul').last().append(newContact);
-				$('ul li').last().animate({ scrollTop: 0}, 300);
+				$('ul li').last().animate({ scrollTop: 0}, 300, function(e) {
+					$('.new-item').removeClass('new-item');
+				});
 			},
 
 			function(content) {
 				console.log('Error!');
 			}
 		);
+    });
+
+    $('.snap-drawer .list').on('tap', '.group', function(event) {
+    	// Grab the contact data
+    	// Remove the list
+    	// Fill in template
+    	// Append template
+    	// Close the drawer
+    	$('#contact-list').empty();
+    	for(var i=0; i< 5; i++){
+		 $('#contact-list').append(template(sample));
+		};
+		$('header .hamburger').click();
     });
 
 
