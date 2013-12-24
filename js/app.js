@@ -13,13 +13,14 @@
 	
 		
 
-window.addEventListener('load', function() {
+$( document ).ready(function() {
 
 	var source = $("#contact-template").html();
 	var template = Handlebars.compile(source);
     var hammertime = new Hammer($(".content")[0], { drag_lock_to_axis: true});
     var titlebar = new Hammer($(".bar-title"));
     var snapmenu = new Hammer($(".snap-drawers"));
+    var groupmodal = new Hammer($(".group-modal"));
 	var startX, offsetX;
 	var startY, offsetY;
 
@@ -100,6 +101,7 @@ window.addEventListener('load', function() {
 
 	$('.content').on('release', '.hovering', function(e) {
 		dropItem = $(this);
+		dropItem.removeClass('new-item');
 		dropItemOffset = dropItem.offset().top;
 		var positions = new Array();
 		positions.push(dropItemOffset);
@@ -150,12 +152,18 @@ window.addEventListener('load', function() {
     });
 
     $('.content').on('tap', '.settings', function(ev) {
+    	// Capture data and implement
+    	// Clear form
+    });
 
+    $('.content').on('drag', '#drag-bar', function(ev) {
+    	$('.slide').css("-webkit-transform", "translate3d("+ev.gesture.deltaX+"px, 0, 0)");
+    	$(this).css("-webkit-transform", "translate3d("+ev.gesture.deltaX+"px, 0, 0)");
     });
 
 
     $('.bar-title').on('tap', '#add-contact', function(ev) {
-    	//close any open contacts
+    	// Close any open contacts
     	forge.contact.select(
 			function(contact) {
 				var newContact = template(contact);
@@ -184,12 +192,26 @@ window.addEventListener('load', function() {
 		$('header .hamburger').click();
     });
 
+    $('.snap-drawer .list').on('tap', '#add-group', function(event) {
 
+    });
 
+    $('.group-modal .content').on('tap', '.create-group', function(event) {
+    	forge.logging.info('Running.');
+    	forge.logging.info($('.group-modal form .group-name').val());
+    	var groupForm = $('.group-modal form');
+    	var groupName = groupForm.find('.group-name').val();
+    	if(groupName != '') {
+	    	$('.snap-drawer .list .group').last().after("<li class='group'>" + groupName + "</li>");
+	    	$('.group-modal').removeClass('active');
+	    	$('.snap-drawer .list .group').trigger('tap');
+	    } else {
+	    	alert('You must enter a group name to continue.');
+	    };
+	    // Empty the form
+    });
 
-});
-
-		var 
+var 
 		
 
 		
@@ -206,11 +228,11 @@ window.addEventListener('load', function() {
 				towards = state.info.towards,
 				opening = state.info.opening;
 			if(opening=='right' && towards=='left'){
-				$('#right-drawer').classList.add('active-drawer');
-				$('#left-drawer').classList.remove('active-drawer');
+				// $('#right-drawer').classList.add('active-drawer');
+				$('#left-drawer').removeClass('active-drawer');
 			} else if(opening=='left' && towards=='right') {
-				$('#right-drawer').classList.remove('active-drawer');
-				$('#left-drawer').classList.add('active-drawer');
+				// $('#right-drawer').classList.remove('active-drawer');
+				$('#left-drawer').addClass('active-drawer');
 			}
 		};
 		
@@ -226,13 +248,17 @@ window.addEventListener('load', function() {
 		    }
 		});
 		
-		$('#toggle-right').click(function(){
-			if( snapper.state().state=="right" ){
-			        snapper.close();
-		    } else {
-		        snapper.open('right');
-		    }
-		});
+		// $('#toggle-right').click(function(){
+		// 	if( snapper.state().state=="right" ){
+		// 	        snapper.close();
+		//     } else {
+		//         snapper.open('right');
+		//     }
+		// });
+
+
+});
+
 
 window.addEventListener('load', function() {
     FastClick.attach(document.body);

@@ -8,6 +8,7 @@ body {
 .content {
 	padding-top: 0px;
 	overflow-x: hidden;
+	background-color: #f0f3f5;
 }
 
 button.hamburger {
@@ -30,6 +31,12 @@ ul {
 	
 }
 
+#drag-bar {
+	width: 100%;
+	height: 50px;
+	border: 1px solid #ccc;
+}
+
 .trans-slide {
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
@@ -40,12 +47,20 @@ ul {
 .contact {
 	border: none;
 	position: relative;
-	background: #ccc;
+	background: #f0f3f5;
 }
 
 .contact p {
 	color: #a0a8ae;
 	font-size: 12px;
+}
+
+.fake-contact {
+
+}
+
+.fake-contact li {
+	border: none;
 }
 
 .list li:first-child {
@@ -118,8 +133,16 @@ ul {
 	background: #ccc;
 }
 
-#settings-modal .content {
+.modal .content {
 	padding-top: 20px;
+}
+
+#settings-modal {
+
+}
+
+#group-modal {
+	
 }
 
 .new-item {

@@ -29,8 +29,7 @@
 		<script src="js/ratchet.js"></script>
 		<link rel="stylesheet" href="css/ionicons.css">
 		<link rel="stylesheet" href="css/style.css">
-		<script src="https://trigger.io/catalyst/target/target-script-min.js#411F7929-4FFA-4ACD-A321-F9C20175BEC2"></script>
-
+		<script src="https://trigger.io/catalyst/target/target-script-min.js#BCEC2B03-BF73-4C06-A854-D6E2F068ECA1"></script>
 
 		<script src="js/handlebars.js"></script>
     	<script src="js/fastclick.js"></script>
@@ -51,6 +50,12 @@
 			    <li class="group" data-group-id="1">Family</li>
 			    <li class="group" data-group-id="1">Vanderbilt</li>
 			    <li class="group" data-group-id="1">Work</li>
+			    <li id="add-group">
+			    	<a href="#group-modal">
+				    	Add Group
+				    	<span><i class="icon ion-navicon ion-plus plus"></i></span>
+				    </a>
+			    </li>
 			    <li class="list-divider">General</li>
 			    <li>Settings</li>
 			    <li>Preferences</li>
@@ -286,88 +291,106 @@
 							<i class="icon ion-ios7-close-outline"></i>
 						</div>
 					</div>
-				</div>
-
-				
+				</div>	
 			</ul>
+
 		</div>
 	</div>
-	<div id="settings-modal" class="modal">
-	  <header class="bar-title">
-	    <h1 class="title">Settings</h1>
-	    <a class="button" href="#settings-modal">
-	      Close
-	    </a>
-	  </header>
-	  <div class="content content-padded">
-	    <form>
-	      <div class="input-group">
-	        <div class="input-row">
-	          <label>Email</label>
-	          <input type="text" placeholder="sonny.byrd@gmail.com">
-	        </div>
-	        <div class="input-row">
-	          <label>Twitter</label>
-	          <input type="email" placeholder="@sonnybyrd">
-	        </div>
-	        <div class="input-row">
-	          <label>Skype</label>
-	          <input type="text" placeholder="sonnybyrd">
-	        </div>
-	        <div class="input-row">
-	          <label>Name</label>
-	          <input type="text" placeholder="Sonny Byrd">
-	        </div>
-	      </div>
-	    </form>
-	  </div>
-	</div>
-	<script id="contact-template" type="text/x-handlebars-template">
-	  <div class="contact new-item">
-	  	<div class="custom" style="display: none">
-	  		<div class="custom-block">
-	  			<i class="icon ion-social-twitter"></i>
-	  		</div>
-	  		<div class="custom-block" id="custom-block-two">
-	  			<i class="icon ion-calendar"></i>
-	  		</div>
-	  		<div class="custom-block" id="custom-block-three">
-	  			<i class="icon ion-social-skype"></i>
-	  		</div>
-	  		<a href="#settings-modal">
-				<div class="custom-block settings">
-					<i class="icon ion-ios7-cog"></i>
-				</div>
-			</a>
-	  	</div>
-	  	<li class="slide trans-slide">
-	  			<strong>{{displayName}}</strong>
-	  			<span class="chevron"></span>
-	  	</li>
-	  	<div class="utilities" style="display: none">
-	  		<a href="mailto:{{emails.[0].value}}">
-	  			<div class="option mail">
-	  				<i class="icon ion-ios7-filing"></i>
-	  			</div>
-	  		</a>
-	  		<a href="tel://{{phoneNumbers.[0].value}}">
-	  			<div class="option phone">
-	  				<i class="icon ion-ios7-telephone"></i>
-	  			</div>
-	  		</a>
-	  		<a href="sms:{{phoneNumbers.[0].value}}">
-	  			<div class="option sms">
-	  				<i class="icon ion-ios7-chatbubble"></i>
-	  			</div>
-	  		</a>
-	  		<div class="option delete">
-	  			<i class="icon ion-ios7-close-outline"></i>
-	  		</div>
-	  	</div>
-	  </div>
-	</script>
-	<script src="js/app.js"></script>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	</script>		
+		<div id="settings-modal" class="modal">
+		  <header class="bar-title">
+		    <h1 class="title">Settings</h1>
+		    <a class="button" href="#settings-modal">
+		      Close
+		    </a>
+		  </header>
+		  <div class="content content-padded">
+		    <form>
+		      <div class="input-group">
+		        <div class="input-row">
+		          <label>Email</label>
+		          <input type="text" placeholder="sonny.byrd@gmail.com">
+		        </div>
+		        <div class="input-row">
+		          <label>Twitter</label>
+		          <input type="email" placeholder="@sonnybyrd">
+		        </div>
+		        <div class="input-row">
+		          <label>Skype</label>
+		          <input type="text" placeholder="sonnybyrd">
+		        </div>
+		        <div class="input-row">
+		          <label>Name</label>
+		          <input type="text" placeholder="Sonny Byrd">
+		        </div>
+		      </div>
+		    </form>
+		  </div>
+		</div>
+		<div id="group-modal" class="modal group-modal">
+		  <header class="bar-title">
+		    <h1 class="title">New Group</h1>
+		    <a class="button close" href="#group-modal">
+		      Close
+		    </a>
+		  </header>
+		  <div class="content content-padded">
+		    <form>
+		      <div class="input-group">
+		        <div class="input-row">
+		          <label>Name</label>
+		          <input class="group-name" type="text" placeholder="ex. Friends, Family, etc.">
+		        </div>
+		      </div>
+		      <a class="create-group">Create Group</a>
+		    </form>
+		  </div>
+		</div>
+		<script id="contact-template" type="text/x-handlebars-template">
+		  <div class="contact new-item">
+		  	<div class="custom" style="display: none">
+		  		<div class="custom-block">
+		  			<i class="icon ion-social-twitter"></i>
+		  		</div>
+		  		<div class="custom-block" id="custom-block-two">
+		  			<i class="icon ion-calendar"></i>
+		  		</div>
+		  		<div class="custom-block" id="custom-block-three">
+		  			<i class="icon ion-social-skype"></i>
+		  		</div>
+		  		<a href="#settings-modal">
+					<div class="custom-block settings">
+						<i class="icon ion-ios7-cog"></i>
+					</div>
+				</a>
+		  	</div>
+		  	<li class="slide trans-slide">
+		  			<strong>{{displayName}}</strong>
+		  			<span class="chevron"></span>
+		  	</li>
+		  	<div class="utilities" style="display: none">
+		  		<a href="mailto:{{emails.[0].value}}">
+		  			<div class="option mail">
+		  				<i class="icon ion-ios7-filing"></i>
+		  			</div>
+		  		</a>
+		  		<a href="tel://{{phoneNumbers.[0].value}}">
+		  			<div class="option phone">
+		  				<i class="icon ion-ios7-telephone"></i>
+		  			</div>
+		  		</a>
+		  		<a href="sms:{{phoneNumbers.[0].value}}">
+		  			<div class="option sms">
+		  				<i class="icon ion-ios7-chatbubble"></i>
+		  			</div>
+		  		</a>
+		  		<div class="option delete">
+		  			<i class="icon ion-ios7-close-outline"></i>
+		  		</div>
+		  	</div>
+		  </div>
+		</script>
+		<script src="js/app.js"></script>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</script>		
     </body>
 </html>
