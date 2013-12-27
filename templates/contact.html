@@ -1,0 +1,44 @@
+<script id="contact-template" type="text/x-handlebars-template">
+  <div class="contact new-item">
+  	<div class="custom" style="display: none">
+  		<div class="custom-block">
+  			<i class="icon ion-social-twitter"></i>
+  		</div>
+  		<div class="custom-block" id="custom-block-two">
+  			<i class="icon ion-calendar"></i>
+  		</div>
+  		<div class="custom-block" id="custom-block-three">
+  			<i class="icon ion-social-skype"></i>
+  		</div>
+  		<a href="#settings-modal">
+			<div class="custom-block settings">
+				<i class="icon ion-ios7-cog"></i>
+			</div>
+		</a>
+  	</div>
+  	<li class="slide trans-slide">
+  			<strong>{{displayName}}</strong>
+  			<span class="chevron"></span>
+  	</li>
+  	<div class="utilities" style="display: none">
+  		<a href="mailto:{{emails.[0].value}}">
+  			<div class="option mail">
+  				<i class="icon ion-ios7-filing"></i>
+  			</div>
+  		</a>
+  		<a href="tel://{{phoneNumbers.[0].value}}">
+  			<div class="option phone">
+  				<i class="icon ion-ios7-telephone"></i>
+  			</div>
+  		</a>
+  		<a href="sms:{{phoneNumbers.[0].value}}">
+  			<div class="option sms">
+  				<i class="icon ion-ios7-chatbubble"></i>
+  			</div>
+  		</a>
+  		<div class="option delete">
+  			<i class="icon ion-ios7-close-outline"></i>
+  		</div>
+  	</div>
+  </div>
+</script>
