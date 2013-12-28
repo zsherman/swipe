@@ -85,36 +85,7 @@
 
 				</div>
 			</div>
-			<div id="settings-modal" class="modal">
-			  <header class="bar-title">
-			    <h1 class="title">Settings</h1>
-			    <a class="button" href="#settings-modal">
-			      Close
-			    </a>
-			  </header>
-			  <div class="content content-padded">
-			    <form>
-			      <div class="input-group">
-			        <div class="input-row">
-			          <label>Email</label>
-			          <input type="text" placeholder="sonny.byrd@gmail.com">
-			        </div>
-			        <div class="input-row">
-			          <label>Twitter</label>
-			          <input type="email" placeholder="@sonnybyrd">
-			        </div>
-			        <div class="input-row">
-			          <label>Skype</label>
-			          <input type="text" placeholder="sonnybyrd">
-			        </div>
-			        <div class="input-row">
-			          <label>Name</label>
-			          <input type="text" placeholder="Sonny Byrd">
-			        </div>
-			      </div>
-			    </form>
-			  </div>
-			</div>
+			
 			<div id="group-modal" class="modal group-modal">
 			  <header class="bar-title">
 			    <h1 class="title">New Group</h1>
@@ -134,20 +105,27 @@
 			    </form>
 			  </div>
 			</div>
+			<div id="settings-modal" class="modal">
+			</div>
 		</div>
 		<script id="contact-template" type="text/x-handlebars-template">
-		  <div class="contact new-item">
 		  	<div class="custom" style="display: none">
-		  		<div class="custom-block">
-		  			<i class="icon ion-social-twitter"></i>
-		  		</div>
-		  		<div class="custom-block" id="custom-block-two">
-		  			<i class="icon ion-calendar"></i>
-		  		</div>
-		  		<div class="custom-block" id="custom-block-three">
-		  			<i class="icon ion-social-skype"></i>
-		  		</div>
-		  		<a href="#settings-modal">
+		  		<a href="#{{twitter}}">
+			  		<div class="custom-block">
+			  			<i class="icon ion-social-twitter"></i>
+			  		</div>
+			  	</a>
+			  	<a href="#{{emails.[0].value}}">
+			  		<div class="custom-block" id="custom-block-two">
+			  			<i class="icon ion-calendar"></i>
+			  		</div>
+			  	</a>
+		  		<a href="#{{skype}}">
+			  		<div class="custom-block" id="custom-block-three">
+			  			<i class="icon ion-social-skype"></i>
+			  		</div>
+			  	</a>
+		  		<a href="#settings">
 					<div class="custom-block settings">
 						<i class="icon ion-ios7-cog"></i>
 					</div>
@@ -177,15 +155,51 @@
 		  			<i class="icon ion-ios7-close-outline"></i>
 		  		</div>
 		  	</div>
+		</script>
+		<script id="edit-contact-template" type="text/x-handlebars-template">
+		  <header class="bar-title">
+		    <h1 class="title">Settings</h1>
+		    <a class="button close" href="#settings-modal">
+		      Close
+		    </a>
+		  </header>
+		  <div class="content content-padded">
+		    <form class="settings">
+		      <div class="input-group">
+		      	<div class="input-row">
+		          <label>Name</label>
+		          <input type="text" placeholder="John Smith" name="name" value="{{name.formatted}}">
+		        </div>
+		      	<div class="input-row">
+		          <label>Phone</label>
+		          <input type="text" placeholder="914-123-4567" name="number" value="{{phoneNumbers.[0].value}}">
+		        </div>
+		        <div class="input-row">
+		          <label>Email</label>
+		          <input type="text" placeholder="john.smith@gmail.com" name="email" value="{{emails.[0].value}}">
+		        </div>
+		        <div class="input-row">
+		          <label>Twitter</label>
+		          <input type="email" placeholder="@johnsmith" name="twitter" value="{{twitter}}">
+		        </div>
+		        <div class="input-row">
+		          <label>Skype</label>
+		          <input type="text" placeholder="johnsmith" name="skype" value="{{skype}}">
+		        </div>
+		      </div>
+		    </form>
+		    <a href="#save" class="save">Save</a>
 		  </div>
 		</script>
 		<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 		<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
 		<script src="js/backbone-hammer.js"></script>
+		<script src="js/syphon.js"></script>
 		<script src="js/models/contact.js"></script>
 		<script src="js/views/app-view.js"></script>
 		<script src="js/views/list-view.js"></script>
 		<script src="js/views/contact-view.js"></script>
+		<script src="js/views/settings-view.js"></script>
 		<script src="js/collections/contacts.js"></script>
 		<script src="js/routers/router.js"></script>
 		<script src="js/app.js"></script>

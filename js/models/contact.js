@@ -8,11 +8,11 @@ app.Contact = Backbone.Model.extend({
 
   // Default attributes ensure that each todo created has `title` and `completed` keys.
   defaults: {
-    name: 'Sonny Byrd',
-    phone: '914-419-1539',
-    email: 'sonny.byrd@gmail.com',
-    twitter: '@sonnybyrd',
-    skype: 'sonnybyrd'
+    // name: '',
+    // phone: '',
+    // email: '',
+    // twitter: '',
+    // skype: ''
   },
 
   // Toggle the `completed` state of this todo item.

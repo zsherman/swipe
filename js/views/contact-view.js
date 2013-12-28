@@ -6,16 +6,20 @@ var app = app || {};
 // The DOM element for a todo item...
 app.ContactView = Backbone.View.extend({
 
-  className: '.contact',
+  className: 'contact',
 
   template: Handlebars.compile($("#contact-template").html()),
 
   events: {
-    
+    'click .settings':'editContact',
+    'tap .delete':'deleteContact'
   },
 
   initialize: function() {
+    this.$settings = this.$('.settings');
+    this.$delete = this.$('.delete');
     this.listenTo(this.model, 'change', this.render);
+    //$('#settings-modal').on('click', '.close', this.closeEdit);
   },
 
   render: function() {
@@ -25,26 +29,37 @@ app.ContactView = Backbone.View.extend({
   },
 
   // Switch this view into `"editing"` mode, displaying the input field.
-  edit: function() {
-    this.$el.addClass('editing');
-    this.$input.focus();
+  editContact: function(e) {
+    e.preventDefault();
+    modalView = new SettingsModalView({model: this.model, view: this});
+    // modalView.show();
+    // this.$el.addClass('editing');
+    // this.$input.focus();
   },
 
   // Close the `"editing"` mode, saving changes to the todo.
-  close: function() {
-    var value = this.$input.val().trim();
+  closeEdit: function(model) {
+    // forge.logging.info('saving');
+    // var formData = {};
+    // $( '#settings-modal form' ).children( 'input' ).each( function( i, el ) {
+    //     {
+    //         formData[ el.id ] = $( el ).val();
+    //     }
+    // });
+    // this.model.set(formData);
+    // this.render();
+    // this.$settingsModal.removeClass('active');
+  },
 
-    if ( value ) {
-      this.model.save({ title: value });
-    }
-
-    this.$el.removeClass('editing');
+  deleteContact: function() {
+    this.model.destroy();
+    this.remove();
   },
 
   // If you hit `enter`, we're through editing the item.
   updateOnEnter: function( e ) {
     if ( e.which === ENTER_KEY ) {
-      this.close();
+      this.closeEdit();
     }
   }
 });
