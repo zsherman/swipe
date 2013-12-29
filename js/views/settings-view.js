@@ -1,3 +1,4 @@
+// TODO: Swith to app.SettingsModalView
 var SettingsModalView = Backbone.View.extend({
 
     className: 'settings-wrapper',

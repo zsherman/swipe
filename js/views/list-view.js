@@ -18,7 +18,6 @@ app.ListView = Backbone.View.extend({
     render: function() {
       this.collection.each(function( item ) {
           this.renderContact( item );
-          console.log(item);
       }, this );
     },
 

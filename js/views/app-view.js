@@ -16,8 +16,8 @@ var app = app || {};
     },
 
     initialize: function () {
-    	this.$groups = this.$('#group-list');
-    	this.$menuButton = this.$('#toggle-left');
+    	// this.$groups = this.$('#group-list');
+    	// this.$menuButton = this.$('#toggle-left');
       this.$header = this.$('.bar-title');
       this.$newContact = this.$('#add-contact');
       this.$content = this.$('#main-content');

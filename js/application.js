@@ -211,42 +211,42 @@
 // 	    // Empty the form
 //     });
 
-// var 
+var 
 		
 
 		
-// 		// Instance
-// 		snapper = new Snap({
-// 			element: document.getElementById('content'),
-// 			dragger: document.getElementById('toggle-left'),
-// 			touchToDrag: false
-// 		}),
+		// Instance
+		snapper = new Snap({
+			element: document.getElementById('content'),
+			dragger: document.getElementById('toggle-left'),
+			touchToDrag: false
+		}),
 		
 		
-// 		UpdateDrawers = function(){
-// 			var state = snapper.state(),
-// 				towards = state.info.towards,
-// 				opening = state.info.opening;
-// 			if(opening=='right' && towards=='left'){
-// 				// $('#right-drawer').classList.add('active-drawer');
-// 				$('#left-drawer').removeClass('active-drawer');
-// 			} else if(opening=='left' && towards=='right') {
-// 				// $('#right-drawer').classList.remove('active-drawer');
-// 				$('#left-drawer').addClass('active-drawer');
-// 			}
-// 		};
+		UpdateDrawers = function(){
+			var state = snapper.state(),
+				towards = state.info.towards,
+				opening = state.info.opening;
+			if(opening=='right' && towards=='left'){
+				// $('#right-drawer').classList.add('active-drawer');
+				$('#left-drawer').removeClass('active-drawer');
+			} else if(opening=='left' && towards=='right') {
+				// $('#right-drawer').classList.remove('active-drawer');
+				$('#left-drawer').addClass('active-drawer');
+			}
+		};
 		
-// 		snapper.on('drag', UpdateDrawers);
-// 		snapper.on('animating', UpdateDrawers);
-// 		snapper.on('animated', UpdateDrawers);
+		snapper.on('drag', UpdateDrawers);
+		snapper.on('animating', UpdateDrawers);
+		snapper.on('animated', UpdateDrawers);
 		
-// 		$('#toggle-left').click(function(){
-// 			if( snapper.state().state=="left" ){
-// 			        snapper.close();
-// 		    } else {
-// 		        snapper.open('left');
-// 		    }
-// 		});
+		$('#toggle-left').click(function(){
+			if( snapper.state().state=="left" ){
+			        snapper.close();
+		    } else {
+		        snapper.open('left');
+		    }
+		});
 		
 // 		// $('#toggle-right').click(function(){
 // 		// 	if( snapper.state().state=="right" ){
@@ -260,6 +260,6 @@
 // });
 
 
-// window.addEventListener('load', function() {
-//     FastClick.attach(document.body);
-// }, false);
+window.addEventListener('load', function() {
+    FastClick.attach(document.body);
+}, false);

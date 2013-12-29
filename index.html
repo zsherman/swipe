@@ -43,7 +43,7 @@
 			<div class="snap-drawers">
 				<div class="snap-drawer snap-drawer-left" id="left-drawer">
 					<ul class="list" id="group-list">
-						<li class="list-divider">Groups</li>
+						<!-- <li class="list-divider">Groups</li>
 					    <li class="group" data-group-id="1">Favorites</li>
 					    <li class="group" data-group-id="1">Friends</li>
 					    <li class="group" data-group-id="1">Family</li>
@@ -62,7 +62,7 @@
 					    <li>
 					    	Update
 					    	<span class="count">4</span>
-					    </li>
+					    </li> -->
 					</ul>
 				</div>
 			</div>
@@ -191,16 +191,23 @@
 		    <a href="#save" class="save">Save</a>
 		  </div>
 		</script>
+		<script id="list-item-template" type="text/x-handlebars-template">
+			<a href="#" class="list-title" data-list-id="{{id}}">{{name}}</a>
+		</script>
 		<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 		<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
 		<script src="js/backbone-hammer.js"></script>
 		<script src="js/syphon.js"></script>
 		<script src="js/models/contact.js"></script>
+		<script src="js/models/list.js"></script>
 		<script src="js/views/app-view.js"></script>
 		<script src="js/views/list-view.js"></script>
 		<script src="js/views/contact-view.js"></script>
 		<script src="js/views/settings-view.js"></script>
+		<script src="js/views/list-menu.js"></script>
+		<script src="js/views/list-menu-item.js"></script>
 		<script src="js/collections/contacts.js"></script>
+		<script src="js/collections/contact-lists.js"></script>
 		<script src="js/routers/router.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/application.js"></script>

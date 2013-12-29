@@ -3,7 +3,7 @@ var app = app || {};
 // Contact Item View
 // --------------
 
-// The DOM element for a todo item...
+// The DOM element for a contact item...
 app.ContactView = Backbone.View.extend({
 
   className: 'contact',
@@ -19,7 +19,7 @@ app.ContactView = Backbone.View.extend({
     this.$settings = this.$('.settings');
     this.$delete = this.$('.delete');
     this.listenTo(this.model, 'change', this.render);
-    //$('#settings-modal').on('click', '.close', this.closeEdit);
+    this.model.on('destroy', this.remove, this);
   },
 
   render: function() {
