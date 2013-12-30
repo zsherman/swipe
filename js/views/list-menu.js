@@ -4,13 +4,14 @@ app.ListMenuView = Backbone.View.extend({
     el: '.snap-drawer-left',
 
     events: {
+      'click .add-group':'addGroup'
     },
 
     initialize: function(initialLists) {
       this.$groupList = $('#group-list');
       this.collection = new app.ContactLists( initialLists );
       this.render();
-      this.collection.on('add', this.render, this);
+      this.listenTo( this.collection, 'add', this.renderGroup );
     },
 
     render: function() {
@@ -27,5 +28,14 @@ app.ListMenuView = Backbone.View.extend({
           model: list
       });
       this.$groupList.append( groupView.render().el );
+    },
+
+    addGroup: function() {
+      var groupModal = new GroupModalView({collection: this.collection});
+      // Bring up modal
+      // Serialize shit
+      // Create the model
+      // Add to group collection
+      // Render it in the side bar
     }
 });

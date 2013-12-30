@@ -43,27 +43,9 @@
 			<div class="snap-drawers">
 				<div class="snap-drawer snap-drawer-left" id="left-drawer">
 					<ul class="list" id="group-list">
-						<!-- <li class="list-divider">Groups</li>
-					    <li class="group" data-group-id="1">Favorites</li>
-					    <li class="group" data-group-id="1">Friends</li>
-					    <li class="group" data-group-id="1">Family</li>
-					    <li class="group" data-group-id="1">Vanderbilt</li>
-					    <li class="group" data-group-id="1">Work</li>
-					    <li id="add-group">
-					    	<a href="#group-modal">
-						    	Add Group
-						    	<span><i class="icon ion-navicon ion-plus plus"></i></span>
-						    </a>
-					    </li>
-					    <li class="list-divider">General</li>
-					    <li>Settings</li>
-					    <li>Preferences</li>
-					    <li>Themes</li>
-					    <li>
-					    	Update
-					    	<span class="count">4</span>
-					    </li> -->
+						
 					</ul>
+					<a href="#" class="add-group">Create Group<i class="icon ion-plus"></i></a>
 				</div>
 			</div>
 			
@@ -82,28 +64,10 @@
 					<ul class="list" id="contact-list">
 							
 					</ul>
-
 				</div>
 			</div>
 			
 			<div id="group-modal" class="modal group-modal">
-			  <header class="bar-title">
-			    <h1 class="title">New Group</h1>
-			    <a class="button close" href="#group-modal">
-			      Close
-			    </a>
-			  </header>
-			  <div class="content content-padded">
-			    <form>
-			      <div class="input-group">
-			        <div class="input-row">
-			          <label>Name</label>
-			          <input class="group-name" type="text" placeholder="ex. Friends, Family, etc.">
-			        </div>
-			      </div>
-			      <a class="create-group">Create Group</a>
-			    </form>
-			  </div>
 			</div>
 			<div id="settings-modal" class="modal">
 			</div>
@@ -194,6 +158,25 @@
 		<script id="list-item-template" type="text/x-handlebars-template">
 			<a href="#" class="list-title" data-list-id="{{id}}">{{name}}</a>
 		</script>
+		<script id="group-form-template" type="text/x-handlebars-template">
+			<header class="bar-title">
+			    <h1 class="title">New Group</h1>
+			    <a class="button close" href="#group-modal">
+			      Close
+			    </a>
+			  </header>
+			  <div class="content content-padded">
+			    <form>
+			      <div class="input-group">
+			        <div class="input-row">
+			          <label>Name</label>
+			          <input class="name" name="name" type="text" placeholder="ex. Friends, Family, etc.">
+			        </div>
+			      </div>
+			    </form>
+			    <a href="#save" class="save">Save</a>
+			  </div>
+		</script>
 		<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 		<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
 		<script src="js/backbone-hammer.js"></script>
@@ -206,6 +189,7 @@
 		<script src="js/views/settings-view.js"></script>
 		<script src="js/views/list-menu.js"></script>
 		<script src="js/views/list-menu-item.js"></script>
+		<script src="js/views/group-modal.js"></script>
 		<script src="js/collections/contacts.js"></script>
 		<script src="js/collections/contact-lists.js"></script>
 		<script src="js/routers/router.js"></script>

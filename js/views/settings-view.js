@@ -31,11 +31,6 @@ var SettingsModalView = Backbone.View.extend({
       return this;
     },
 
-    renderView: function(template) {
-      this.$el.html(template());
-      this.$el.modal({show:false}); // dont show modal on instantiation
-    },
-
     save: function(e) {
       console.log('save');
       e.preventDefault();
