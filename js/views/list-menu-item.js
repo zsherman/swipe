@@ -28,7 +28,10 @@ app.ListMenuItemView = Backbone.View.extend({
     var self = this;
     var listID = this.model.get('id');
     var list = sampleLists[listID-1];
-    var groupView = new app.ListView(list.contacts);
+    app.currentContacts.reset(list.contacts);
+    //var groupView = new app.ListView();
+    snapper.close();
+    // Remove existing list
     // Find the contacts associated with this List Model
     // Empty the ContactList collection and add the new contacts
     // Get rid of existing list-view & Render them

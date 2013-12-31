@@ -19,6 +19,7 @@ $(function () {
 
         // Kick things off by creating the `App` and create an initial Contact List
         new app.AppView();
-        new app.ListView(sampleContacts);
+        app.currentContacts = new app.ContactList(sampleContacts);
+        app.firstList = new app.ListView();
         new app.ListMenuView(sampleLists);
 });

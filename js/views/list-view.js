@@ -9,10 +9,12 @@ app.ListView = Backbone.View.extend({
 
     initialize: function( initialContacts ) {
       this.$list = $('#contact-list');
-      this.collection = new app.ContactList( initialContacts );
-      currentContacts = this.collection // Set global to this collection to keep track
+      this.collection = app.currentContacts;
       this.listenTo( this.collection, 'add', this.renderContact ); // May want to use .on instead if the event handler is being removed
+      this.listenTo( this.collection, 'reset', this.render );
+      // this.collection.on('add', this.renderContact, this);
       this.render();
+      console.log(this.collection);
     },
 
     // render contact list by rendering each contact in its collection
@@ -20,7 +22,6 @@ app.ListView = Backbone.View.extend({
       this.$list.empty();
       this.collection.each(function( item ) {
           this.renderContact( item );
-          console.log(item);
       }, this );
     },
 
@@ -34,11 +35,12 @@ app.ListView = Backbone.View.extend({
     },
 
     addContact: function(e) {
-      var self = this;
+      var that = this;
       e.gesture.preventDefault();
       forge.contact.select(
         function(contact) {
-          self.collection.add( new app.Contact( contact ) )
+          that.collection.add( new app.Contact( contact ) );
+          console.log(that.collection);
         },
 
         function(content) {
