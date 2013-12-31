@@ -4,6 +4,7 @@ app.ListMenuView = Backbone.View.extend({
     el: '.snap-drawer-left',
 
     events: {
+      'click .group':'open',
       'click .add-group':'addGroup'
     },
 
@@ -30,12 +31,14 @@ app.ListMenuView = Backbone.View.extend({
       this.$groupList.append( groupView.render().el );
     },
 
+    open: function(e) {
+      e.preventDefault();
+      $('.active').removeClass('active');
+      e.target.addClass('active');
+
+    },
+
     addGroup: function() {
       var groupModal = new GroupModalView({collection: this.collection});
-      // Bring up modal
-      // Serialize shit
-      // Create the model
-      // Add to group collection
-      // Render it in the side bar
     }
 });

@@ -26,6 +26,7 @@ var GroupModalView = Backbone.View.extend({
 
     render: function() {
       this.$el.html( this.template() );
+      this.$el.find('input:first').focus();
       return this;
     },
 
