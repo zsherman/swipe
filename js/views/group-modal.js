@@ -33,7 +33,9 @@ var GroupModalView = Backbone.View.extend({
     save: function(e) {
       e.preventDefault();
       var data = Backbone.Syphon.serialize(this);
-      this.options.collection.add( new app.List({name: data.name}));
+      var group = new app.List({name: data.name});
+      this.options.collection.add(group);
+      group.save();
       console.log(this.options.collection);
       $('#group-modal').removeClass('active');
       this.tearDown();

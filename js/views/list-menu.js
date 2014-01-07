@@ -4,19 +4,18 @@ app.ListMenuView = Backbone.View.extend({
     el: '.snap-drawer-left',
 
     events: {
-      'click .group':'open',
+      // 'click .group':'open',
       'click .add-group':'addGroup'
     },
 
     initialize: function(initialLists) {
       this.$groupList = $('#group-list');
-      this.collection = new app.ContactLists( initialLists );
-      this.render();
+      this.collection = app.lists;
       this.listenTo( this.collection, 'add', this.renderGroup );
+      this.render();
     },
 
     render: function() {
-      var that = this;
         this.collection.each(function(list) {
           this.renderGroup(list);
         }, this);
@@ -38,7 +37,8 @@ app.ListMenuView = Backbone.View.extend({
 
     },
 
-    addGroup: function() {
+    addGroup: function(e) {
+      e.preventDefault();
       var groupModal = new GroupModalView({collection: this.collection});
     }
 });

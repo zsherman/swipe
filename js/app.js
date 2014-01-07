@@ -9,6 +9,7 @@ $(function () {
           };
 
         // Create Hammer Objects
+        var main = new Hammer($("#contact-app"));
         var hammertime = new Hammer($(".content")[0], { drag_lock_to_axis: true});
         var titlebar = new Hammer($(".bar-title"));
         var snapmenu = new Hammer($(".snap-drawers"));
@@ -18,16 +19,22 @@ $(function () {
         var currentContacts;
 
         // Kick things off by creating the `App` and create an initial Contact List
+        
+        // app.currentContacts = new app.ContactList(sampleContacts);
+        // app.list_view = new app.ListMenuView(sampleLists);
+
         app.app_view = new app.AppView();
-        app.currentContacts = new app.ContactList(sampleContacts);
-        app.first_list = new app.ListView();
-        app.list_view = new app.ListMenuView(sampleLists);
+        app.lists = new app.ContactLists();             // Create global list collection
+        app.lists.create({ id: 1, name: 'Favorites' }); // Should only happen once, the first time the app is started
+        app.lists.fetch();                              // Fetch the user's lists
+        app.list_view = new app.ListMenuView();         // Render them in the side menu
+        $('#group-list li').first().click();            // Trigger tap
+        // Trigger a click on the first list to render it in the contacts list view
 
 
-        // app.lists = new app.ContactLists();
-        // var favorites = new app.List({ name: 'Favorites' });
-        // app.lists.add(new app.List({name: data.name})
-        // app.lists.fetch();
+
+
+
         // New list collection
         // Fetch existing
                 //Add favorites list if none exist

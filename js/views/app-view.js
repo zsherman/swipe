@@ -12,7 +12,8 @@ var app = app || {};
     el: '#contact-app',
 
     events: {
-      
+      'tap #add-contact':'addContact',
+      'swipe .bar-title':'swipeHeader'
     },
 
     initialize: function () {
@@ -33,7 +34,20 @@ var app = app || {};
     },
 
     addContact: function(e) {
-      e.preventDefault();
+      forge.contact.select(
+        function(contact) {
+          app.contact_list_view.addContact(contact);
+          console.log('adding');
+        },
+
+        function(content) {
+          forge.logging.info('Error!');
+        }
+      );
+    },
+
+    swipeHeader: function(e) {
+      console.log(e.gesture.direction);
     },
 
     addAll: function() {

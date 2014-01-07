@@ -14,6 +14,7 @@ app.ListMenuItemView = Backbone.View.extend({
     this.model.on('change', this.render, this);
     this.model.on('destroy', this.remove, this);
     this.model.on('select', this.open, this);
+    console.log(this.model);
   },
 
   render: function() {
@@ -24,11 +25,26 @@ app.ListMenuItemView = Backbone.View.extend({
     return this;
   },
 
-  open: function() {
+  open: function(e) {
+    e.preventDefault();
+    if ( app.hasOwnProperty('contact_list_view') ) {
+      app.contact_list_view.remove();
+      delete app['contact_list_view'];
+    };
     var self = this;
     var listID = this.model.get('id');
-    var list = sampleLists[listID-1];
-    app.currentContacts.reset(list.contacts);
+    // this.model.contacts.create( {name: {formatted: 'test'}} );
+    this.model.contacts.fetch(); // Pass in id for server?
+    app.contact_list_view = new app.ListView({
+      model: self.model
+    });
+    $('header h1').text(this.$("a").text());
+    $('li.selected').removeClass('selected');
+    this.$el.addClass('selected');
+    // create a new list view and pass in this model
+
+    // var list = sampleLists[listID-1];
+    // app.currentContacts.reset(list.contacts);
     //var groupView = new app.ListView();
     snapper.close();
     // Remove existing list

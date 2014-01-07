@@ -10,7 +10,7 @@
 
 		<!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 		<!-- Set Apple icons for when prototype is saved to home screen -->
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="touch-icons/apple-touch-icon-114x114.png">
@@ -62,9 +62,9 @@
 				<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
 				<div class="content" id="main-content">
 			
-					<ul class="list" id="contact-list">
+					<!-- <ul class="list" id="contact-list">
 							
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 			
@@ -97,8 +97,19 @@
 				</a>
 		  	</div>
 		  	<li class="slide trans-slide">
-		  			<strong>{{name.formatted}}</strong>
-		  			<span class="chevron"></span>
+			  		{{#if photos.[0].value}}
+			  			<div class="avatar" style="background-image: url('{{photos.[0].value}}');">
+			  		   	</div>
+			  		{{else}}
+			  		    <div class="avatar">
+			  		   	</div>
+			  		{{/if}}
+		  		{{#if name.formatted}}
+		  		   	<strong>{{name.formatted}}</strong>
+		  		{{else}}
+		  		    <strong>{{displayName}}</strong>
+		  		{{/if}}
+		  		<span><i class="icon ion-checkmark-circled"></i></span>
 		  	</li>
 		  	<div class="utilities" style="display: none">
 		  		<a href="mailto:{{emails.[0].value}}">
@@ -117,7 +128,7 @@
 		  			</div>
 		  		</a>
 		  		<div class="option delete">
-		  			<i class="icon ion-ios7-close-outline"></i>
+		  			<i class="icon ion-close"></i>
 		  		</div>
 		  	</div>
 		</script>
@@ -133,7 +144,12 @@
 		      <div class="input-group">
 		      	<div class="input-row">
 		          <label>Name</label>
-		          <input type="text" placeholder="John Smith" name="name" value="{{name.formatted}}">
+		          <input type="text" placeholder="John Smith" name="name" 
+		          	{{#if name.formatted}}
+		  		   		value="{{name.formatted}}">
+			  		{{else}}
+			  		    value="{{displayName}}">
+			  		{{/if}}
 		        </div>
 		      	<div class="input-row">
 		          <label>Phone</label>
@@ -157,6 +173,7 @@
 		  </div>
 		</script>
 		<script id="list-item-template" type="text/x-handlebars-template">
+			<i class="ion-ios7-people"></i>
 			<a href="#" class="list-title" data-list-id="{{id}}">{{name}}</a>
 		</script>
 		<script id="group-form-template" type="text/x-handlebars-template">
@@ -178,10 +195,25 @@
 			    <a href="#save" class="save">Save</a>
 			  </div>
 		</script>
-		<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-		<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+		<script id="sms-template" type="text/x-handlebars-template">
+			<div id="ios7menu">
+				<ul>
+				    <li>Choose a message</li>
+				    <li class="sms-message" data-phone="{{phoneNumbers.[0].value}}"><a>Whats Up?</a></li>
+				    <li class="sms-message" data-phone="{{phoneNumbers.[0].value}}"><a>Be there soon.</a></li>
+				    <li class="sms-message" data-phone="{{phoneNumbers.[0].value}}"><a>On my way.</a></li>
+				</ul>
+				<ul>
+				    <li><a href="#" class="cancel-sms"><strong>Cancel</strong></a></li>
+				</ul>
+			</div>
+			<div id="blackout"></div>
+		</script>
+		<script src="js/underscore.js"></script>
+		<script src="js/backbone.js"></script>
 		<script src="js/backbone-localstorage.js"></script>
 		<script src="js/backbone-hammer.js"></script>
+		<script src="js/backbone-touch.js"></script>
 		<script src="js/syphon.js"></script>
 		<script src="js/models/contact.js"></script>
 		<script src="js/models/list.js"></script>

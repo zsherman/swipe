@@ -32,7 +32,6 @@ var SettingsModalView = Backbone.View.extend({
     },
 
     save: function(e) {
-      console.log('save');
       e.preventDefault();
       var data = Backbone.Syphon.serialize(this);
       this.options.model.set({
@@ -41,7 +40,7 @@ var SettingsModalView = Backbone.View.extend({
          { givenName: 'Jason',
            familyName: 'Novack',
            formatted: data.name },
-        displayName: 'Jason Novack',
+        displayName: data.name,
         emails: 
          [ { type: 'home',
              pref: false,
@@ -50,7 +49,6 @@ var SettingsModalView = Backbone.View.extend({
         skype: data.skype
       });
       $('#settings-modal').removeClass('active');
-      console.log(this.options.model);
       this.tearDown();
     }
  });

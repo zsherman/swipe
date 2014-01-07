@@ -8,7 +8,7 @@ app.List = Backbone.Model.extend({
   },
 
   initialize: function() {
-    this.contacts = new app.ContactList();
+    this.contacts = createContactCollection(this.id);
   }
 
 });

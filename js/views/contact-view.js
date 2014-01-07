@@ -6,13 +6,16 @@ var app = app || {};
 // The DOM element for a contact item...
 app.ContactView = Backbone.View.extend({
 
-  className: 'contact',
+  className: 'contact new-item',
 
   template: Handlebars.compile($("#contact-template").html()),
 
+  smsTemplate: Handlebars.compile($("#sms-template").html()),
+
   events: {
     'click .settings':'editContact',
-    'tap .delete':'deleteContact'
+    'click .delete':'deleteContact',
+    'hold .sms':'defaultSms'
   },
 
   initialize: function() {
@@ -37,29 +40,16 @@ app.ContactView = Backbone.View.extend({
     // this.$input.focus();
   },
 
-  // Close the `"editing"` mode, saving changes to the todo.
-  closeEdit: function(model) {
-    // forge.logging.info('saving');
-    // var formData = {};
-    // $( '#settings-modal form' ).children( 'input' ).each( function( i, el ) {
-    //     {
-    //         formData[ el.id ] = $( el ).val();
-    //     }
-    // });
-    // this.model.set(formData);
-    // this.render();
-    // this.$settingsModal.removeClass('active');
-  },
 
-  deleteContact: function() {
+  deleteContact: function(e) {
+    e.preventDefault();
     this.model.destroy();
+    // persist
     this.remove();
   },
 
-  // If you hit `enter`, we're through editing the item.
-  updateOnEnter: function( e ) {
-    if ( e.which === ENTER_KEY ) {
-      this.closeEdit();
-    }
+  defaultSms: function(ev) {
+    ev.gesture.stopPropagation();
+    $('#contact-app').append(this.smsTemplate(this.model.toJSON()));
   }
 });

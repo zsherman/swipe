@@ -18,3 +18,13 @@ ForgeError: Source folder "src" does not exist - have you run forge create yet?
     prog=ENTRY_POINT_NAME,
 ForgeError: Source folder "src" does not exist - have you run forge create yet?
 
+2014-01-02 21:42:11,403 [   INFO] Forge tools running at version 3.3.71
+2014-01-02 21:42:11,403 [  DEBUG] Checking for update zip...
+2014-01-02 21:42:11,470 [  ERROR] Source folder "src" does not exist - have you run forge create yet?
+2014-01-02 21:42:11,470 [  DEBUG] Traceback (most recent call last):
+  File "/Applications/TriggerToolkit.app/Contents/MacOS/build-tools/forge/async.py", line 106, in run
+    result = self._target(*self._args, **self._kwargs)
+  File "/Applications/TriggerToolkit.app/Contents/MacOS/build-tools/forge/main.py", line 308, in development_build
+    prog=ENTRY_POINT_NAME,
+ForgeError: Source folder "src" does not exist - have you run forge create yet?
+
