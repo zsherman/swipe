@@ -6,7 +6,7 @@ app.ListView = Backbone.View.extend({
     className: 'list',
 
     events: {
-      
+      //'release .checked':'groupOptions'
     },
 
     initialize: function() {
@@ -40,4 +40,5 @@ app.ListView = Backbone.View.extend({
       this.collection.create( new app.Contact( contact ) );
       console.log('added');
     }
+
 });

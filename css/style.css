@@ -45,7 +45,7 @@ button.plus {
 	font-weight: 300 !important;
 }
 
-li.slide {
+li.slide, li.checked {
 	background: #fff;
 	z-index: 2;
 	padding: 24px 20px 24px 61px;
@@ -53,13 +53,18 @@ li.slide {
 	-webkit-transform: translateZ(0);
 }
 
-li.slide span {
+
+li.slide span, li.checked span {
 	float: right;
 }
 
-li.slide span i {
+li.slide span i, li.checked span i {
 	font-size: 20px;
 	color: #d4d8dd;
+}
+
+li.slide span i {
+	visibility: hidden;
 }
 
 li.slide strong {
@@ -68,6 +73,7 @@ li.slide strong {
 
 li.checked span i {
 	color: #54dc98;
+	visibility: visible;
 }
 
 #left-drawer {
@@ -167,6 +173,16 @@ li.active {
 
 .list li:first-child {
 	border-top: none;
+}
+
+.group-window {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	background: #54dc98;
 }
 
 .option {
@@ -349,12 +365,74 @@ li.active {
 }
 
 #blackout{
-  background-color: rgba(0,0,0,0.35);
+  background-color: rgba(0,0,0,0.75);
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 50;
+  -webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
 }
 
+#group-options {
+  width: 96%;
+  position: fixed;
+  top: 15%;
+  left: 2%;
+  z-index: 150;
+  max-height: 0;
+  opacity: 0;
+  -webkit-transform: translateY(400px);
+  -webkit-animation: 
+	menuHeight 0.2s ease forwards,
+	menuIn 0.3s 0.2s ease forwards;
+}
+
+#group-options ul{
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+  margin: 0 0 20px 0;
+  padding: 0 0 0 0;
+}
+
+#group-options ul li{
+  list-style: none;
+  text-align: center;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 400;
+  margin: 5% 5.8%;
+  padding: 8px 0;
+  height: 50px;
+  border-radius: 100px;
+  float: left;
+  background: #000;
+  opacity: 0.45;
+  width: 21%;
+  border: 1px solid #fff;
+}
+
+#group-options ul li:last-child{
+  border-bottom: none;
+  box-shadow: none;
+}
+
+#group-options ul li a{
+  display: block;
+  color: #026fff;
+  font-size: 22px;
+  font-weight: 400;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+}
+
+#group-options ul li i {
+	padding-top: 7px;
+	padding-left: 1px;
+}

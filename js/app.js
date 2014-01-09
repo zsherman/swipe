@@ -18,6 +18,42 @@ $(function () {
         var startY, offsetY;
         var currentContacts;
 
+        
+
+        
+        // // Instance
+        // app.snapper = new Snap({
+        //     element: document.getElementById('content'),
+        //     dragger: document.getElementById('toggle-left'),
+        //     touchToDrag: false
+        // }),
+        
+        
+        // app.UpdateDrawers = function(){
+        //     var state = app.snapper.state(),
+        //         towards = state.info.towards,
+        //         opening = state.info.opening;
+        //     if(opening=='right' && towards=='left'){
+        //         // $('#right-drawer').classList.add('active-drawer');
+        //         $('#left-drawer').removeClass('active-drawer');
+        //     } else if(opening=='left' && towards=='right') {
+        //         // $('#right-drawer').classList.remove('active-drawer');
+        //         $('#left-drawer').addClass('active-drawer');
+        //     }
+        // };
+        
+        // app.snapper.on('drag', app.UpdateDrawers);
+        // app.snapper.on('animating', app.UpdateDrawers);
+        // app.snapper.on('animated', app.UpdateDrawers);
+        
+        // $('#toggle-left').click(function(){
+        //     if( app.snapper.state().state=="left" ){
+        //             app.snapper.close();
+        //     } else {
+        //         app.snapper.open('left');
+        //     }
+        // });
+
         // Kick things off by creating the `App` and create an initial Contact List
         
         // app.currentContacts = new app.ContactList(sampleContacts);

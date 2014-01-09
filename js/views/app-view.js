@@ -11,6 +11,8 @@ var app = app || {};
 
     el: '#contact-app',
 
+    groupTemplate: Handlebars.compile($("#group-options-template").html()),
+
     events: {
       'tap #add-contact':'addContact',
       'swipe .bar-title':'swipeHeader'
@@ -52,6 +54,16 @@ var app = app || {};
 
     addAll: function() {
 
+    },
+
+    groupOptions: function(e) {
+      // Find all the models
+      // Fill in template
+      // Bring up menu (attach template)
+      $('#contact-app').append(this.groupTemplate());
+      // Execute choice
+      // Translate all checked back to (0,0,0)
+      // Remove class checked and add class slide
     }
 
   });

@@ -37,12 +37,21 @@ var contactOpen = false;
     	$(this).parent().find('.custom').hide();
 		e.preventDefault();
 		offsetX = ($(window).width()-$(this).outerWidth(true))/2; // Basically 0px
-		$('.slide').not(this).css("-webkit-transform", "translate3d(0, 0, 0)");
+		$('.slide').not(this).css("-webkit-transform", "translate3d(0, 0, 0)"); // Do this with css class
 		if(e.gesture.deltaX < 0) {
 			$(this).parent().find('.utilities').show();
 		} else {
 			$(this).parent().find('.custom').show();
 		}
+	});
+
+	$('.content').on('dragstart', '.checked', function(e) {
+		e.gesture.preventDefault();
+		$('.checked').removeClass('trans-slide');
+		$('.checked').parent().find('.utilities').hide();
+    $('.checked').parent().find('.custom').hide();
+    $('.group-window').show();
+    offsetX = ($(window).width()-$(this).outerWidth(true))/2;
 	});
 
 	$('.content').on('drag', '.slide', function(e) {
@@ -53,6 +62,14 @@ var contactOpen = false;
 		}
 	});
 
+	$('.content').on('drag', '.checked', function(e) {
+		if(!Hammer.utils.isVertical(e.gesture.direction)) {
+			e.gesture.preventDefault();
+			var diffX = (e.gesture.deltaX - offsetX);
+			$('.checked').css("-webkit-transform", "translate3d("+diffX+"px, 0, 0)");
+		}
+	});
+
 	$('.content').on('release', '.slide', function(e) {
 		e.preventDefault();
 		$(this).removeClass('hovering');
@@ -60,12 +77,14 @@ var contactOpen = false;
 	    if( e.gesture.direction == 'right' && e.gesture.deltaX >= 120) {
     		$(this).attr({'left': false, 'right': true});
     		$(this).css("-webkit-transform", "translate3d(268px, 0, 0)");
+    		$('.checked').addClass('slide');
     		$('.checked').removeClass('checked');
     		contactOpen = true;
     	} else if (e.gesture.direction == 'left' && e.gesture.deltaX <= -120) {
 	    		$(this).attr({'left': true, 'right': false});
 	    		$(this).css("-webkit-transform", "translate3d(-268px, 0, 0)");
-	    		$('.checked').removeClass('checked');
+	    		$('.checked').addClass('slide');
+    			$('.checked').removeClass('checked');
 	    		contactOpen = true;
     	}
       	else {
@@ -80,13 +99,38 @@ var contactOpen = false;
 	    offsetX = 0;
 	});
 
-	$('.content').on('tap', '.slide', function(e) {
-		e.gesture.preventDefault();
+	$('.content').on('release', '.checked', function(e) {
+		$('.checked').addClass('trans-slide');
+		$('.checked').removeClass('hovering');
+		if( e.gesture.direction == 'right' && e.gesture.deltaX >= 120) {
+        app.app_view.groupOptions(e);
+    		$('.checked').attr({'left': false, 'right': true});
+    		$('.checked').css("-webkit-transform", "translate3d(268px, 0, 0)");
+    		contactOpen = true;
+    	} else if (e.gesture.direction == 'left' && e.gesture.deltaX <= -120) {
+          app.app_view.groupOptions(e);
+	    		$('.checked').attr({'left': true, 'right': false});
+	    		$('.checked').css("-webkit-transform", "translate3d(-268px, 0, 0)");
+	    		contactOpen = true;
+    	} else {
+    	  $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
+		  	$('.checked').parent().find('.group-window').hide();
+    	  $('.checked').attr({"left": false, "right": false});
+    	  contactOpen = false;
+    	}
+	});
+
+	$('.content').on('tap', 'li', function(e) {
+		e.preventDefault();
 		if(contactOpen === false) {
 			if($(this).hasClass('checked')) {
+				$(this).addClass('slide');
 				$(this).removeClass('checked');
+				console.log('should be slide');
 			} else {
 				$(this).addClass('checked');
+				$(this).removeClass('slide');
+				console.log('should be checked');
 			}
 		} else if($(this).attr('left') == "true" || $(this).attr('right') == "true") {
 			$(this).attr({"left": false, "right": false});
@@ -100,16 +144,6 @@ var contactOpen = false;
 	    contactOpen = false;
 		}
 	});
-
-	// $('.content').on('tap', '.slide', function(e) {
-	// 	if(contactOpen === false) {
-	// 		if($(this).hasClass('checked')) {
-	// 			$(this).removeClass('checked');
-	// 		} else {
-	// 			$(this).addClass('checked');
-	// 		}
-	// 	};
-	// });
 
 	$('.content').on('hold', '.slide', function(e) {
 		e.gesture.preventDefault();
@@ -158,9 +192,18 @@ var contactOpen = false;
   	};
   });
 
-  $('#contact-app').on('click', '.cancel-sms', function(){
+  $('#contact-app').on('tap', '.cancel-sms', function(){
   	$('#blackout').remove();
   	$('#ios7menu').remove();
+  });
+
+  $('#contact-app').on('tap', '#blackout', function(){
+    //$('#ios7menu').remove(); need to fix timing, is autoremoving on release
+    $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
+    $('#group-options').remove();
+    $('#blackout').remove();
+    $('.checked').addClass('slide');
+    $('.checked').removeClass('checked');
   });
 
   $('#contact-app').on('tap', '.sms-message', function(){
