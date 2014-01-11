@@ -6,7 +6,7 @@ app.ListView = Backbone.View.extend({
     className: 'list',
 
     events: {
-      //'release .checked':'groupOptions'
+
     },
 
     initialize: function() {
@@ -20,15 +20,25 @@ app.ListView = Backbone.View.extend({
 
     // render contact list by rendering each contact in its collection
     render: function() {
-      this.collection.each(function( item ) {
-          this.renderContact( item );
-      }, this );
-      $('#main-content').append(this.$el);
+      // if 0, render the empty template
+      if(this.collection.length === 0) {
+        $('#main-content').append("<div class='no-contacts'><i class='ion-ios7-contact'></i><h1>Add some contacts.<h1></div>");
+      } else {
+        this.collection.each(function( item ) {
+            this.renderContact( item );
+        }, this );
+        $('.no-contacts').remove();
+        $('#main-content').append(this.$el);
+      };
     },
 
     // render a contact by creating a ContactView and appending the
     // element it renders to the list's element
     renderContact: function( item ) {
+      if(this.collection.length === 1) {
+        $('.no-contacts').remove();
+        $('#main-content').append(this.$el);
+      };
       var contactView = new app.ContactView({
           model: item
       });
@@ -36,7 +46,6 @@ app.ListView = Backbone.View.extend({
     },
 
     addContact: function(contact) {
-      forge.logging.info(contact);
       this.collection.create( new app.Contact( contact ) );
       console.log('added');
     }

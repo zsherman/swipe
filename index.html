@@ -116,17 +116,17 @@
 		  	</li>
 		  	<div class="utilities" style="display: none">
 		  		<a href="mailto:{{emails.[0].value}}">
-		  			<div class="option mail">
+		  			<div class="option mail" data-email="{{emails.[0].value}}">
 		  				<i class="icon ion-ios7-filing"></i>
 		  			</div>
 		  		</a>
 		  		<a href="tel://{{phoneNumbers.[0].value}}">
-		  			<div class="option phone">
+		  			<div class="option phone" data-number="{{phoneNumbers.[0].value}}">
 		  				<i class="icon ion-ios7-telephone"></i>
 		  			</div>
 		  		</a>
 		  		<a href="sms:{{phoneNumbers.[0].value}}">
-		  			<div class="option sms">
+		  			<div class="option sms" data-sms="{{phoneNumbers.[0].value}}">
 		  				<i class="icon ion-ios7-chatbubble"></i>
 		  			</div>
 		  		</a>
@@ -215,15 +215,18 @@
 		<script id="group-options-template" type="text/x-handlebars-template">
 			<div id="group-options">
 				<ul>
-				    <li class="group-option"><i class="icon ion-ios7-chatbubble"></i></li>
-				    <li class="group-option"><i class="ion-ios7-telephone"></i></li>
-				    <li class="group-option"><i class="ion-ios7-filing"></i></li>
-				    <li class="group-option"><i class="ion-social-skype"></i></li>
-				    <li class="group-option"><i class="ion-social-twitter"></i></li>
-				    <li class="group-option"><i class="ion-calendar"></i></li>
-				    <li class="group-option"><i class="ion-camera"></i></li>
-				    <li class="group-option"><i class="ion-social-facebook"></i></li>
-				    <li class="group-option"><i class="ion-social-dropbox"></i></li>
+				    <li class="group-option" id="sms"><i class="icon ion-ios7-chatbubble"></i></li>
+				    <li class="group-option" id="phone"><i class="ion-ios7-telephone"></i></li>
+				    <li class="group-option" id="mail"><i class="ion-ios7-filing"></i></li>
+				    <li class="group-option" id="skype"><i class="ion-social-skype"></i></li>
+				    <li class="group-option" id="twitter"><i class="ion-social-twitter"></i></li>
+				    <li class="group-option" id="calendar"><i class="ion-calendar"></i></li>
+				    <li class="group-option" id="photo"><i class="ion-camera"></i></li>
+				    <li class="group-option" id="facebook"><i class="ion-social-facebook"></i></li>
+				    <li class="group-option" id="dropbox"><i class="ion-social-dropbox"></i></li>
+				    <li class="group-option" id="photo"><i class="ion-ios7-videocam"></i></li>
+				    <li class="group-option" id="facebook"><i class="ion-social-googleplus"></i></li>
+				    <li class="group-option" id="dropbox"><i class="ion-social-buffer"></i></li>
 				</ul>
 			</div>
 			<div id="blackout"></div>

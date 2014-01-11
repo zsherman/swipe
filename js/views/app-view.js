@@ -15,7 +15,8 @@ var app = app || {};
 
     events: {
       'tap #add-contact':'addContact',
-      'swipe .bar-title':'swipeHeader'
+      'swipe .bar-title':'swipeHeader',
+      'tap #sms':'groupSMS'
     },
 
     initialize: function () {
@@ -43,7 +44,7 @@ var app = app || {};
         },
 
         function(content) {
-          forge.logging.info('Error!');
+          console.log('Error!');
         }
       );
     },
@@ -64,7 +65,32 @@ var app = app || {};
       // Execute choice
       // Translate all checked back to (0,0,0)
       // Remove class checked and add class slide
+    },
+
+    groupSMS: function(e) {
+      e.gesture.stopPropagation();
+      var numbers = [];
+      $('.checked').each(function(index) {
+        numbers.push($(this).parent().find('.sms').data('sms'));
+      });
+      console.log(numbers);
+      var message = '';
+      forge.sms.send({
+        body: message,
+        to: numbers
+      }, function () {
+        $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
+        $('.checked').attr({"left": false, "right": false});
+        contactOpen = false;
+        $('#group-options').remove();
+        $('#blackout').remove();
+        $('.checked').addClass('slide');
+        $('.checked').removeClass('checked');
+        $('.checked').removeClass('open');
+      });
     }
+
+
 
   });
 

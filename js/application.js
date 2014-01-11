@@ -29,7 +29,7 @@
 //   $("body").append('<div id="ios7statusbar"/>');
 // }
 
-var contactOpen = false;
+contactOpen = false;
 
 	$('.content').on('dragstart', '.slide', function(e) {
 		$(this).removeClass('trans-slide');
@@ -75,14 +75,16 @@ var contactOpen = false;
 		$(this).removeClass('hovering');
 		$(this).addClass('trans-slide');
 	    if( e.gesture.direction == 'right' && e.gesture.deltaX >= 120) {
-    		$(this).attr({'left': false, 'right': true});
     		$(this).css("-webkit-transform", "translate3d(268px, 0, 0)");
+        $(this).attr({'left': false, 'right': true});
+        $(this).addClass('open');
     		$('.checked').addClass('slide');
     		$('.checked').removeClass('checked');
     		contactOpen = true;
     	} else if (e.gesture.direction == 'left' && e.gesture.deltaX <= -120) {
-	    		$(this).attr({'left': true, 'right': false});
 	    		$(this).css("-webkit-transform", "translate3d(-268px, 0, 0)");
+          $(this).attr({'left': true, 'right': false});
+          $(this).addClass('open');
 	    		$('.checked').addClass('slide');
     			$('.checked').removeClass('checked');
 	    		contactOpen = true;
@@ -104,17 +106,20 @@ var contactOpen = false;
 		$('.checked').removeClass('hovering');
 		if( e.gesture.direction == 'right' && e.gesture.deltaX >= 120) {
         app.app_view.groupOptions(e);
+        $('.checked').css("-webkit-transform", "translate3d(268px, 0, 0)");
     		$('.checked').attr({'left': false, 'right': true});
-    		$('.checked').css("-webkit-transform", "translate3d(268px, 0, 0)");
+        $('.checked').addClass('open');
     		contactOpen = true;
     	} else if (e.gesture.direction == 'left' && e.gesture.deltaX <= -120) {
           app.app_view.groupOptions(e);
+          $('.checked').css("-webkit-transform", "translate3d(-268px, 0, 0)");
 	    		$('.checked').attr({'left': true, 'right': false});
-	    		$('.checked').css("-webkit-transform", "translate3d(-268px, 0, 0)");
+          $('.checked').addClass('open');
 	    		contactOpen = true;
     	} else {
     	  $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
-		  	$('.checked').parent().find('.group-window').hide();
+		  	//$('.checked').parent().find('.group-window').hide();
+        $('.checked').removeClass('open');
     	  $('.checked').attr({"left": false, "right": false});
     	  contactOpen = false;
     	}
@@ -126,21 +131,21 @@ var contactOpen = false;
 			if($(this).hasClass('checked')) {
 				$(this).addClass('slide');
 				$(this).removeClass('checked');
-				console.log('should be slide');
 			} else {
 				$(this).addClass('checked');
 				$(this).removeClass('slide');
-				console.log('should be checked');
 			}
 		} else if($(this).attr('left') == "true" || $(this).attr('right') == "true") {
-			$(this).attr({"left": false, "right": false});
 		 	$(this).css("-webkit-transform", "translate3d(0, 0, 0)"); // Do this with css class instead
+      $(this).attr({"left": false, "right": false});
+      $(this).removeClass('open');
       // $(this).parent().find('.utilities').hide();
       // $(this).parent().find('.custom').hide();
 	    contactOpen = false;
 		} else {
 	    $('.slide').not(this).css("-webkit-transform", "translate3d(0, 0, 0)"); // Do this with css class instead
 	    $('.slide').not(this).attr({"left": false, "right": false});
+      $('.open').removeClass('open');
 	    contactOpen = false;
 		}
 	});
@@ -193,20 +198,29 @@ var contactOpen = false;
   });
 
   $('#contact-app').on('tap', '.cancel-sms', function(){
+    // Close item and set attr left && right to false and contactOpen to false
+    $('.open').css("-webkit-transform", "translate3d(0, 0, 0)");
+    $('.open').attr({"left": false, "right": false});
   	$('#blackout').remove();
   	$('#ios7menu').remove();
+    $('.open').removeClass('open');
+    contactOpen = false;
+    
   });
 
   $('#contact-app').on('tap', '#blackout', function(){
     //$('#ios7menu').remove(); need to fix timing, is autoremoving on release
     $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
+    $('.checked').attr({"left": false, "right": false});
+    $('.checked').removeClass('open');
+    contactOpen = false;
     $('#group-options').remove();
     $('#blackout').remove();
     $('.checked').addClass('slide');
     $('.checked').removeClass('checked');
   });
 
-  $('#contact-app').on('tap', '.sms-message', function(){
+  $('#contact-app').on('tap', '.sms-message', function(e){
   	var message = $(this).children('a').text();
   	var phoneNumber = $(this).data('phone');
   	forge.sms.send({
