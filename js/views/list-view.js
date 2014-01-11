@@ -22,6 +22,7 @@ app.ListView = Backbone.View.extend({
     render: function() {
       // if 0, render the empty template
       if(this.collection.length === 0) {
+        $('.no-contacts').remove();
         $('#main-content').append("<div class='no-contacts'><i class='ion-ios7-contact'></i><h1>Add some contacts.<h1></div>");
       } else {
         this.collection.each(function( item ) {

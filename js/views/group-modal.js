@@ -7,7 +7,8 @@ var GroupModalView = Backbone.View.extend({
 
     events: {
       'click .close':'save',
-      'click .save':'save'
+      'click .save':'save',
+      'submit form':'save'
     },
 
     initialize: function(options) {

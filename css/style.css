@@ -329,6 +329,10 @@ li.active {
 	font-weight: 400;
 }
 
+form.settings, form.new-group-form {
+	background: #F0F3F5;
+}
+
 /*****SMS Messages Template*****/
 
 #ios7menu{
