@@ -1,4 +1,8 @@
 // forge.enableDebug();
+// forge.topbar.hide();
+// forge.topbar.setStatusBarStyle("light_content");
+// forge.topbar.setTint([55, 150, 223, 255]);
+// forge.topbar.setStatusBarStyle('light_content', function(){}, function(){});
 // Parse.initialize("HnFF9oHDickQ3CknbgdpeY1hK4biWwQCKegnSjhy", "fHBZvDcyvFvf9BwuDlPE86S8FEZWBzmRIpPk3P19");
 // forge.logging.info("Add JavaScript to js/main.js!");
 // forge.logging.info("This Runs");

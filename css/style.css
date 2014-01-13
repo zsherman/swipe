@@ -1,8 +1,13 @@
 body {
 	-webkit-user-select: none;
-	-webkit-overflow-scrolling : touch;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: all 1s ease-in-out;
+	-webkit-backface-visibility: hidden;
+	overflow:hidden;
+    width:100%;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 body { -webkit-touch-callout: none !important; }
@@ -18,6 +23,8 @@ header {
 	background-image: none !important;
 	border: none !important;
 	background-color: #4A9EDF !important;
+	box-shadow: none !important;
+	border-top: 1px solid #4A9EDF;
 }
 
 header h1 {
@@ -114,13 +121,18 @@ li.selected {
 
 }
 
+ul.list {
+	overflow: hidden;
+}
+
 ul {
-	
+	background: rgb(0,0,0,0);
 }
 
 li.active {
 	font-weight: bold;
 }
+
 
 .avatar {
 	height: 40px;

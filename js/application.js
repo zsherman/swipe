@@ -1,15 +1,15 @@
 /* Prevent Safari opening links when viewing as a Mobile App */
-(function (a, b, c) {
-    if(c in b && b[c]) {
-        var d, e = a.location,
-            f = /^(a|html)$/i;
-        a.addEventListener("click", function (a) {
-            d = a.target;
-            while(!f.test(d.nodeName)) d = d.parentNode;
-            "href" in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href)
-        }, !1)
-    }
-})(document, window.navigator, "standalone");
+// (function (a, b, c) {
+//     if(c in b && b[c]) {
+//         var d, e = a.location,
+//             f = /^(a|html)$/i;
+//         a.addEventListener("click", function (a) {
+//             d = a.target;
+//             while(!f.test(d.nodeName)) d = d.parentNode;
+//             "href" in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href)
+//         }, !1)
+//     }
+// })(document, window.navigator, "standalone");
 	
 		
 
@@ -185,17 +185,17 @@ contactOpen = false;
 		offsetY = 0;
 	});
 
-  $('.list').on('drag', function(event) {
-  	if(!Hammer.utils.isVertical(event.gesture.direction)) {
-  		event.gesture.preventDefault();
-  	}
-  });
+  // $('.list').on('drag', function(event) {
+  // 	if(!Hammer.utils.isVertical(event.gesture.direction)) {
+  // 		event.gesture.preventDefault();
+  // 	}
+  // });
 
-  $('.content').on('drag', function(event) {
-  	if(!Hammer.utils.isVertical(event.gesture.direction)) {
-  		event.gesture.preventDefault();
-  	};
-  });
+  // $('.content').on('drag', function(event) {
+  // 	if(!Hammer.utils.isVertical(event.gesture.direction)) {
+  // 		event.gesture.preventDefault();
+  // 	};
+  // });
 
   $('#contact-app').on('tap', '.cancel-sms', function(){
     // Close item and set attr left && right to false and contactOpen to false
@@ -209,10 +209,10 @@ contactOpen = false;
   });
 
   $('#contact-app').on('tap', '#blackout', function(){
-    //$('#ios7menu').remove(); need to fix timing, is autoremoving on release
-    $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
-    $('.checked').attr({"left": false, "right": false});
-    $('.checked').removeClass('open');
+    $('#ios7menu').remove(); 
+    $('li').css("-webkit-transform", "translate3d(0, 0, 0)");
+    $('li').attr({"left": false, "right": false});
+    $('li').removeClass('open');
     contactOpen = false;
     $('#group-options').remove();
     $('#blackout').remove();
@@ -232,10 +232,16 @@ contactOpen = false;
   	});
   });
 
-  // $('#contact-app').on('click', '#blackout', function(){
-  // 	$(this).remove();
-  // 	$('#ios7menu').remove();
-  // 	console.log('removing2');
+  // $('#contact-app').on('tap', '.mail-message', function(e){
+  //   var message = $(this).children('a').text();
+  //   var phoneNumber = $(this).data('phone');
+  //   forge.sms.send({
+  //     body: message,
+  //     to: [phoneNumber]
+  //   }, function () {
+  //     $('#blackout').remove();
+  //     $('#ios7menu').remove();
+  //   });
   // });
 
 

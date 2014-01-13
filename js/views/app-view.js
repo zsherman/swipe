@@ -16,7 +16,8 @@ var app = app || {};
     events: {
       'tap #add-contact':'addContact',
       'swipe .bar-title':'swipeHeader',
-      'tap #sms':'groupSMS'
+      'tap #sms':'groupSMS',
+      'tap #mail':'groupMail'
     },
 
     initialize: function () {
@@ -73,7 +74,7 @@ var app = app || {};
       $('.checked').each(function(index) {
         numbers.push($(this).parent().find('.sms').data('sms'));
       });
-      console.log(numbers);
+      forge.logging.info(numbers);
       var message = '';
       forge.sms.send({
         body: message,
@@ -88,6 +89,24 @@ var app = app || {};
         $('.checked').removeClass('checked');
         $('.checked').removeClass('open');
       });
+    },
+
+    groupMail: function(e) {
+      e.preventDefault();
+      e.gesture.stopPropagation();
+      e.gesture.preventDefault();
+      var emails = [];
+      $('.checked').each(function(index) {
+        emails.push($(this).parent().find('.mail').data('email'));
+      });
+      forge.logging.info(emails);
+      var message = '';
+      var link = "mailto://";
+      for(var i=0; i<emails.length; i++) {
+        var email = encodeURIComponent(emails[i]);
+        link += (email+"%2C");
+      }
+      location.href = link;
     }
 
 
