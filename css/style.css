@@ -205,17 +205,21 @@ li.active {
 	width: 21%;
 	background: #ee5045;
 	z-index: 1;
+	padding-top: 20px;
+	text-align: center;
 }
 
 .option i {
 	font-size: 28px;
 	color: #fff;
-	padding: 20px 24px;
+}
+
+.delete {
+	padding-top: 24px;
 }
 
 .delete i {
-	font-size: 22px;
-	padding: 23px 27px;
+	font-size: 21px;
 }
 
 .sms {
@@ -239,24 +243,28 @@ li.active {
 	top: 0px;
 	height: 100%;
 	width: 21%;
-	background: #1e86cc;
+	background: #DFDFDF;
 	z-index: 1;
+	padding-top: 20px;
+	text-align: center;
+}
+
+.add-block {
+	border-left: 1px solid #CFD3D6;
+	background: #D7DADD;
 }
 
 .custom-block i {
 	font-size: 28px;
 	color: #fff;
-	padding: 20px 22px;
 }
 
 #custom-block-two {
 	left: 21%;
-	background: #44c8bb;
 }
 
 #custom-block-three {
 	left: 42%;
-	background: #00baed;
 }
 
 .settings {
@@ -471,3 +479,25 @@ form.settings, form.new-group-form {
 	padding-top: 7px;
 	padding-left: 1px;
 }
+
+#block-options {
+
+}
+
+#block-options ul li {
+	list-style: none;
+	text-align: center;
+	color: #000;
+	font-size: 36px;
+	font-weight: 400;
+	margin: 5% 5.8%;
+	padding: 8px 0;
+	height: 50px;
+	width: 50px;
+	float: left;
+	background: #6eb7e9;
+	opacity: 0.45;
+	width: 21%;
+}
+
+

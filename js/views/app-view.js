@@ -15,7 +15,6 @@ var app = app || {};
 
     events: {
       'tap #add-contact':'addContact',
-      'swipe .bar-title':'swipeHeader',
       'tap #sms':'groupSMS',
       'tap #mail':'groupMail'
     },

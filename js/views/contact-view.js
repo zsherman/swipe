@@ -15,7 +15,8 @@ app.ContactView = Backbone.View.extend({
   events: {
     'click .settings':'editContact',
     'click .delete':'deleteContact',
-    'hold .sms':'defaultSms'
+    'hold .sms':'defaultSms',
+    'tap .add-block':'blockMenu'
   },
 
   initialize: function() {
@@ -34,7 +35,7 @@ app.ContactView = Backbone.View.extend({
   // Switch this view into `"editing"` mode, displaying the input field.
   editContact: function(e) {
     e.preventDefault();
-    modalView = new SettingsModalView({model: this.model, view: this});
+    var modalView = new SettingsModalView({model: this.model, view: this});
     // modalView.show();
     // this.$el.addClass('editing');
     // this.$input.focus();
@@ -51,5 +52,13 @@ app.ContactView = Backbone.View.extend({
   defaultSms: function(ev) {
     ev.gesture.stopPropagation();
     $('#contact-app').append(this.smsTemplate(this.model.toJSON()));
+  },
+
+  blockMenu: function(e) {
+    var modalView = new BlockModalView({model: this.model, view: this});
+  },
+
+  addBlock: function(e) {
+
   }
 });

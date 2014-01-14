@@ -75,14 +75,14 @@ contactOpen = false;
 		$(this).removeClass('hovering');
 		$(this).addClass('trans-slide');
 	    if( e.gesture.direction == 'right' && e.gesture.deltaX >= 120) {
-    		$(this).css("-webkit-transform", "translate3d(268px, 0, 0)");
+    		$(this).css("-webkit-transform", "translate3d(83.8%, 0, 0)");
         $(this).attr({'left': false, 'right': true});
         $(this).addClass('open');
     		$('.checked').addClass('slide');
     		$('.checked').removeClass('checked');
     		contactOpen = true;
     	} else if (e.gesture.direction == 'left' && e.gesture.deltaX <= -120) {
-	    		$(this).css("-webkit-transform", "translate3d(-268px, 0, 0)");
+	    		$(this).css("-webkit-transform", "translate3d(-83.8%, 0, 0)");
           $(this).attr({'left': true, 'right': false});
           $(this).addClass('open');
 	    		$('.checked').addClass('slide');
@@ -106,13 +106,13 @@ contactOpen = false;
 		$('.checked').removeClass('hovering');
 		if( e.gesture.direction == 'right' && e.gesture.deltaX >= 120) {
         app.app_view.groupOptions(e);
-        $('.checked').css("-webkit-transform", "translate3d(268px, 0, 0)");
+        $('.checked').css("-webkit-transform", "translate3d(83.8%, 0, 0)");
     		$('.checked').attr({'left': false, 'right': true});
         $('.checked').addClass('open');
     		contactOpen = true;
     	} else if (e.gesture.direction == 'left' && e.gesture.deltaX <= -120) {
           app.app_view.groupOptions(e);
-          $('.checked').css("-webkit-transform", "translate3d(-268px, 0, 0)");
+          $('.checked').css("-webkit-transform", "translate3d(-83.8%, 0, 0)");
 	    		$('.checked').attr({'left': true, 'right': false});
           $('.checked').addClass('open');
 	    		contactOpen = true;

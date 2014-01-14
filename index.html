@@ -72,6 +72,8 @@
 			</div>
 			<div id="settings-modal" class="modal">
 			</div>
+			<div id="block-modal" class="modal">
+			</div>
 		</div>
 		<script id="contact-template" type="text/x-handlebars-template">
 			<div class="group-window">
@@ -79,18 +81,18 @@
 			</div>
 		  	<div class="custom" style="display: none">
 		  		<a href="#{{twitter}}">
-			  		<div class="custom-block">
-			  			<i class="icon ion-social-twitter"></i>
+			  		<div class="custom-block add-block">
+			  			<i class="icon ion-plus"></i>
 			  		</div>
 			  	</a>
 			  	<a href="#{{emails.[0].value}}">
-			  		<div class="custom-block" id="custom-block-two">
-			  			<i class="icon ion-calendar"></i>
+			  		<div class="custom-block add-block" id="custom-block-two">
+			  			<i class="icon ion-plus"></i>
 			  		</div>
 			  	</a>
 		  		<a href="#{{skype}}">
-			  		<div class="custom-block" id="custom-block-three">
-			  			<i class="icon ion-social-skype"></i>
+			  		<div class="custom-block add-block" id="custom-block-three">
+			  			<i class="icon ion-plus"></i>
 			  		</div>
 			  	</a>
 		  		<a href="#settings">
@@ -231,6 +233,27 @@
 			</div>
 			<div id="blackout"></div>
 		</script>
+		<script id="block-menu-template" type="text/x-handlebars-template">
+			<header class="bar-title">
+			    <h1 class="title">Choose Block</h1>
+			    <a class="button close" href="#block-modal">
+			      Close
+			    </a>
+			</header>
+			<div class="content content-padded" id="block-options">
+				<ul>
+				    <li class="block-option" class="skype"><i class="ion-social-skype"></i></li>
+				    <li class="block-option" class="twitter"><i class="ion-social-twitter"></i></li>
+				    <li class="block-option" class="calendar"><i class="ion-calendar"></i></li>
+				    <li class="block-option" class="photo"><i class="ion-camera"></i></li>
+				    <li class="block-option" class="facebook"><i class="ion-social-facebook"></i></li>
+				    <li class="block-option" class="dropbox"><i class="ion-social-dropbox"></i></li>
+				    <li class="block-option" class="photo"><i class="ion-ios7-videocam"></i></li>
+				    <li class="block-option" class="facebook"><i class="ion-social-googleplus"></i></li>
+				    <li class="block-option" class="dropbox"><i class="ion-social-buffer"></i></li>
+				</ul>
+			</div>
+		</script>
 		<script src="js/underscore.js"></script>
 		<script src="js/backbone.js"></script>
 		<script src="js/backbone-localstorage.js"></script>
@@ -246,6 +269,7 @@
 		<script src="js/views/list-menu.js"></script>
 		<script src="js/views/list-menu-item.js"></script>
 		<script src="js/views/group-modal.js"></script>
+		<script src="js/views/block-modal.js"></script>
 		<script src="js/collections/contacts.js"></script>
 		<script src="js/collections/contact-lists.js"></script>
 		<script src="js/routers/router.js"></script>
