@@ -29,7 +29,14 @@ app.ListView = Backbone.View.extend({
             this.renderContact( item );
         }, this );
         $('.no-contacts').remove();
+        $('#main-content').empty();
         $('#main-content').append(this.$el);
+        $('#main-content').prepend('<i class="icon ion-search search-icon"></i><input class="search" placeholder="Search Contacts"/>');
+        var options = {
+            valueNames: [ 'name' ]
+        };
+
+        var userList = new List('main-content', options);
       };
     },
 

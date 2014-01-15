@@ -37,6 +37,7 @@
 		<script src="js/hammer.js"></script>
 		<script src="js/hammer-jquery.js"></script>
 		<script src="js/sample-data.js"></script>
+		<script src="js/list.js"></script>
 		<script src="js/main.js"></script>
 	</head>
 	<body>
@@ -61,7 +62,6 @@
 			
 				<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
 				<div class="content" id="main-content">
-			
 					<!-- <ul class="list" id="contact-list">
 							
 					</ul> -->
@@ -110,9 +110,9 @@
 			  		   	</div>
 			  		{{/if}}
 		  		{{#if name.formatted}}
-		  		   	<strong>{{name.formatted}}</strong>
+		  		   	<strong class="name">{{name.formatted}}</strong>
 		  		{{else}}
-		  		    <strong>{{displayName}}</strong>
+		  		    <strong class="name">{{displayName}}</strong>
 		  		{{/if}}
 		  		<span><i class="icon ion-checkmark-circled"></i></span>
 		  	</li>
