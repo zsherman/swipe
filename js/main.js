@@ -1,4 +1,4 @@
-forge.enableDebug();
+// forge.enableDebug();
 // forge.topbar.hide();
 // forge.topbar.setStatusBarStyle("light_content");
 // forge.topbar.setTint([55, 150, 223, 255]);

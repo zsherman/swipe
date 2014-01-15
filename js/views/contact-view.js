@@ -16,7 +16,8 @@ app.ContactView = Backbone.View.extend({
     'click .settings':'editContact',
     'click .delete':'deleteContact',
     'hold .sms':'defaultSms',
-    'tap .add-block':'blockMenu'
+    'tap .add-block':'blockMenu',
+    'hold .custom-block':'blockMenu'
   },
 
   initialize: function() {
@@ -55,7 +56,8 @@ app.ContactView = Backbone.View.extend({
   },
 
   blockMenu: function(e) {
-    var modalView = new BlockModalView({model: this.model, view: this});
+    var target = $(e.currentTarget);
+    var modalView = new BlockModalView({model: this.model, view: this, target: target });
   },
 
   addBlock: function(e) {

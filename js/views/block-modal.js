@@ -8,7 +8,7 @@ var BlockModalView = Backbone.View.extend({
     events: {
       'click .close':'tearDown',
       'click .save':'save',
-      'submit form':'save'
+      'tap .block-option':'save'
     },
 
     initialize: function(options) {
@@ -34,23 +34,15 @@ var BlockModalView = Backbone.View.extend({
     },
 
     save: function(e) {
-      e.preventDefault();
-      var data = Backbone.Syphon.serialize(this);
-      this.options.model.set({
-        phoneNumbers: [ { type: 'home', pref: false, value: data.number } ],
-        name: 
-         { givenName: 'Jason',
-           familyName: 'Novack',
-           formatted: data.name },
-        displayName: data.name,
-        emails: 
-         [ { type: 'home',
-             pref: false,
-             value: data.email } ],
-        twitter: data.twitter,
-        skype: data.skype
-      });
-      $('#settings-modal').removeClass('active');
+      e.gesture.preventDefault();
+      var blockName = $(e.currentTarget).data('name');
+      var blockIcon = $(e.currentTarget).find('i').attr('class');
+      this.options.target.removeClass();
+      this.options.target.addClass(blockName);
+      this.options.target.addClass('custom-block');
+      this.options.target.find('i').attr('class', blockIcon);
+      // update contact settings
+      $('#block-modal').removeClass('active');
       this.tearDown();
     }
  });
