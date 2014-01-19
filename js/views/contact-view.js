@@ -17,7 +17,8 @@ app.ContactView = Backbone.View.extend({
     'click .delete':'deleteContact',
     'hold .sms':'defaultSms',
     'tap .add-block':'blockMenu',
-    'hold .custom-block':'blockMenu'
+    'hold .custom-block':'blockMenu',
+    'tap .camera':'takePhoto'
   },
 
   initialize: function() {
@@ -60,7 +61,29 @@ app.ContactView = Backbone.View.extend({
     var modalView = new BlockModalView({model: this.model, view: this, target: target });
   },
 
-  addBlock: function(e) {
+  mmsPhoto: function(file) {
+    forge.logging.info(file);
+    var numbers = [];
+    numbers.push(this.$el.find('.phone').data('number'));
+    // var message = file.uri;
+    forge.logging.info(numbers);
+    forge.sms.send({
+      body: file.uri,
+      to: numbers
+    }, function () {
+      console.log('It actually worked');
+    });
+  },
 
+
+  takePhoto: function(e) {
+    var self = this;
+    forge.file.getImage({},
+      function(file){
+        self.mmsPhoto(file);
+      },
+      function(content){}
+    );
   }
+
 });

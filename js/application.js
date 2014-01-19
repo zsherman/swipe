@@ -28,7 +28,7 @@
 //   $("body").addClass("ios7");
 //   $("body").append('<div id="ios7statusbar"/>');
 // }
-
+var app = app || {};
 contactOpen = false;
 
 	$('.content').on('dragstart', '.slide', function(e) {
@@ -46,12 +46,22 @@ contactOpen = false;
 	});
 
 	$('.content').on('dragstart', '.checked', function(e) {
+    $('.group-window i').css("-webkit-transform", "none");
 		e.gesture.preventDefault();
 		$('.checked').removeClass('trans-slide');
 		$('.checked').parent().find('.utilities').hide();
     $('.checked').parent().find('.custom').hide();
     $('.group-window').show();
     offsetX = ($(window).width()-$(this).outerWidth(true))/2;
+    if(e.gesture.direction == 'right') {
+      $('.group-window i').css("right", "auto");
+      $('.group-window i').css("left", "-42px");
+      $('.group-window i').attr('class', "icon ion-more");
+    } else if(e.gesture.direction == 'left') {
+      $('.group-window i').css("left", "auto");
+      $('.group-window i').css("right", "-42px");
+      $('.group-window i').attr('class', "icon ion-ios7-chatbubble");
+    }
 	});
 
 	$('.content').on('drag', '.slide', function(e) {
@@ -67,6 +77,19 @@ contactOpen = false;
 			e.gesture.preventDefault();
 			var diffX = (e.gesture.deltaX - offsetX);
 			$('.checked').css("-webkit-transform", "translate3d("+diffX+"px, 0, 0)");
+      $('.group-window i').css("-webkit-transform", "translate3d("+diffX+"px, 0, 0)");
+      if(e.gesture.direction == 'left') {
+        if(e.gesture.deltaX > -75) {
+          $('.group-window').css("background", "#dbe5ec");
+          $('.group-window i').attr('class', "icon ion-ios7-chatbubble");
+        } else if((e.gesture.deltaX <= -76) && (e.gesture.deltaX >= -155)) {
+          $('.group-window').css("background", "#ffde51");
+          $('.group-window i').attr('class', "icon ion-ios7-chatbubble");
+        } else if(e.gesture.deltaX <= -156) {
+          $('.group-window').css("background", "#6eb7e9");
+          $('.group-window i').attr('class', "icon ion-ios7-filing");
+        }
+      }
 		}
 	});
 
@@ -91,9 +114,8 @@ contactOpen = false;
     	}
       	else {
       	  $(this).css("-webkit-transform", "translate3d(0, 0, 0)");
-			  	$(this).parent().find('.utilities').hide();
-	    	  $(this).parent().find('.custom').hide();
 	    	  $(this).attr({"left": false, "right": false});
+          $(this).removeClass('open');
 	    	  contactOpen = false;
       	}
       	// Reset Position Vars
@@ -104,20 +126,37 @@ contactOpen = false;
 	$('.content').on('release', '.checked', function(e) {
 		$('.checked').addClass('trans-slide');
 		$('.checked').removeClass('hovering');
+    $('.group-window').css("background", "#9b83dd");
 		if( e.gesture.direction == 'right' && e.gesture.deltaX >= 120) {
         app.app_view.groupOptions(e);
         $('.checked').css("-webkit-transform", "translate3d(83.8%, 0, 0)");
+        $('.group-window i').css("-webkit-transform", "translate3d(264px, 0, 0)");
     		$('.checked').attr({'left': false, 'right': true});
         $('.checked').addClass('open');
     		contactOpen = true;
-    	} else if (e.gesture.direction == 'left' && e.gesture.deltaX <= -120) {
-          app.app_view.groupOptions(e);
-          $('.checked').css("-webkit-transform", "translate3d(-83.8%, 0, 0)");
-	    		$('.checked').attr({'left': true, 'right': false});
-          $('.checked').addClass('open');
-	    		contactOpen = true;
+    	} else if (e.gesture.deltaX <= -120) {
+          if(e.gesture.deltaX > -75) {
+            // Nothing
+            $('.group-window').css("background", "#dbe5ec");
+            $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
+            $('.group-window i').css("-webkit-transform", "none");
+          } else if((e.gesture.deltaX <= -76) && (e.gesture.deltaX >= -155)) {
+            $('.group-window').css("background", "#ffde51");
+            $('.checked').css("-webkit-transform", "translate3d(-100%, 0, 0)");
+            $('.group-window i').css({"-webkit-transform":"none", "right":"47%"});
+            app.app_view.groupSMS(e);
+          } else if(e.gesture.deltaX <= -156) {
+            $('.group-window').css("background", "#6eb7e9");
+            $('.checked').css("-webkit-transform", "translate3d(-100%, 0, 0)");
+            $('.group-window i').css({"-webkit-transform":"none", "right": "47%"});
+            app.app_view.groupMail(e);
+            $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
+            $('.checked').addClass('slide');
+            $('.checked').removeClass('checked');
+          }
     	} else {
     	  $('.checked').css("-webkit-transform", "translate3d(0, 0, 0)");
+        $('.group-window i').css("-webkit-transform", "none");
 		  	//$('.checked').parent().find('.group-window').hide();
         $('.checked').removeClass('open');
     	  $('.checked').attr({"left": false, "right": false});
@@ -139,12 +178,10 @@ contactOpen = false;
 		 	$(this).css("-webkit-transform", "translate3d(0, 0, 0)"); // Do this with css class instead
       $(this).attr({"left": false, "right": false});
       $(this).removeClass('open');
-      // $(this).parent().find('.utilities').hide();
-      // $(this).parent().find('.custom').hide();
 	    contactOpen = false;
 		} else {
-	    $('.slide').not(this).css("-webkit-transform", "translate3d(0, 0, 0)"); // Do this with css class instead
-	    $('.slide').not(this).attr({"left": false, "right": false});
+	    $('.slide').css("-webkit-transform", "translate3d(0, 0, 0)"); // Do this with css class instead
+	    $('.slide').attr({"left": false, "right": false});
       $('.open').removeClass('open');
 	    contactOpen = false;
 		}

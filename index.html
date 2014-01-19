@@ -16,8 +16,8 @@
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png">
 		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png">
 
-		<script src="js/jquery.js"></script>
-		<script src="js/functions.js"></script>
+		<script src="js/lib/jquery.js"></script>
+		<script src="js/lib/functions.js"></script>
 		<!-- <script src="http://www.parsecdn.com/js/parse-1.2.15.min.js"></script> -->
 		<!-- Include the base Snap.js CSS -->
 
@@ -26,18 +26,17 @@
 		<link rel="stylesheet" href="css/snap.css">
 
 		<!-- Include the compiled Ratchet JS -->
-		<script src="js/ratchet.js"></script>
+		<script src="js/lib/ratchet.js"></script>
 		<link rel="stylesheet" href="css/ionicons.css">
 		<link rel="stylesheet" href="css/style.css">
 		<script src="https://trigger.io/catalyst/target/target-script-min.js#73114424-EA14-45AE-ADEC-7E4E4C6D7E4B"></script>
-		<script src="js/handlebars.js"></script>
-    	<script src="js/fastclick.js"></script>
-		<script src="js/snap.js"></script>
-		<script src="js/iscroll.js"></script>
-		<script src="js/hammer.js"></script>
-		<script src="js/hammer-jquery.js"></script>
+		<script src="js/lib/handlebars.js"></script>
+    	<script src="js/lib/fastclick.js"></script>
+		<script src="js/lib/snap.js"></script>
+		<script src="js/lib/hammer.js"></script>
+		<script src="js/lib/hammer-jquery.js"></script>
 		<script src="js/sample-data.js"></script>
-		<script src="js/list.js"></script>
+		<script src="js/lib/list.js"></script>
 		<script src="js/main.js"></script>
 	</head>
 	<body>
@@ -77,7 +76,7 @@
 		</div>
 		<script id="contact-template" type="text/x-handlebars-template">
 			<div class="group-window">
-
+				<i class="icon ion-ios7-filing"></i>
 			</div>
 		  	<div class="custom" style="display: none">
 		  		<a href="#{{twitter}}">
@@ -180,6 +179,7 @@
 		<script id="list-item-template" type="text/x-handlebars-template">
 			<i class="ion-ios7-people"></i>
 			<a href="#" class="list-title" data-list-id="{{id}}">{{name}}</a>
+			<i class="delete-group icon ion-close"></i>
 		</script>
 		<script id="group-form-template" type="text/x-handlebars-template">
 			<header class="bar-title">
@@ -258,12 +258,12 @@
 				</ul>
 			</div>
 		</script>
-		<script src="js/underscore.js"></script>
-		<script src="js/backbone.js"></script>
-		<script src="js/backbone-localstorage.js"></script>
-		<script src="js/backbone-hammer.js"></script>
-		<script src="js/backbone-touch.js"></script>
-		<script src="js/syphon.js"></script>
+		<script src="js/lib/underscore.js"></script>
+		<script src="js/lib/backbone.js"></script>
+		<script src="js/lib/backbone-localstorage.js"></script>
+		<script src="js/lib/backbone-hammer.js"></script>
+		<script src="js/lib/backbone-touch.js"></script>
+		<script src="js/lib/syphon.js"></script>
 		<script src="js/models/contact.js"></script>
 		<script src="js/models/list.js"></script>
 		<script src="js/views/app-view.js"></script>

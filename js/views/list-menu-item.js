@@ -7,7 +7,8 @@ app.ListMenuItemView = Backbone.View.extend({
   template: Handlebars.compile($("#list-item-template").html()),
 
   events: {
-    'click': 'open'
+    'click': 'open',
+    'tap .delete-group': 'removeGroup'
   },
 
   initialize: function() {
@@ -52,5 +53,12 @@ app.ListMenuItemView = Backbone.View.extend({
     // Empty the ContactList collection and add the new contacts
     // Get rid of existing list-view & Render them
     return false;
+  },
+
+  removeGroup: function(e) {
+    this.model.destroy();
+    this.remove();
+    $('#group-list li').first().click();
   }
+
 });

@@ -52,13 +52,18 @@ button.plus {
 	font-weight: 300 !important;
 }
 
+.search-wrapper {
+	padding: 6px;
+	background: #FFF;
+	border-bottom: 1px solid #E4E4E4;
+}
 
 .search {
 	border: none;
-	background: #F5F5F5;
-	padding: 12px 30px;
+	border-radius: 5px;
+	background: #EAEBED;
+	padding: 8px 26px 7px 28px;
 	margin-top: 0px;
-	border-bottom: 1px solid #E4E4E4;
 	margin: 0px;
 	width: 100%;
 	box-sizing: border-box;
@@ -67,8 +72,8 @@ button.plus {
 .search-icon {
 	position: absolute;
 	z-index: 1000;
-	top: 2.5%;
-	left: 2.5%;
+	top: 2.86%;
+	left: 4.0%;
 	color: #A1A2A5;
 	font-size: 20px;
 }
@@ -137,9 +142,21 @@ li.group i {
 	float: left;
 }
 
+li.group i.delete-group {
+	display: none;
+	font-size: 17px;
+	padding-top: none;
+	top: 17px;
+	position: absolute;
+	right: 12px;
+}
+
 li.selected {
 	background: #374856;
+}
 
+li.selected i.delete-group {
+	display: block;
 }
 
 ul.list {
@@ -217,6 +234,14 @@ li.active {
 	width: 100%;
 	z-index: 1;
 	background: #54dc98;
+}
+
+.group-window i {
+	font-size: 30px;
+	color: #FFF;
+	position: absolute;
+	top: 19px;
+	z-index: 1000;
 }
 
 .option {
@@ -481,6 +506,10 @@ form.settings, form.new-group-form {
   width: 21%;
   border: 1px solid #fff;
   pointer-events: all;
+}
+
+#group-options ul li:active {
+	background: #51b8ff;
 }
 
 #group-options ul li:last-child{

@@ -31,7 +31,7 @@ app.ListView = Backbone.View.extend({
         $('.no-contacts').remove();
         $('#main-content').empty();
         $('#main-content').append(this.$el);
-        $('#main-content').prepend('<i class="icon ion-search search-icon"></i><input class="search" placeholder="Search Contacts"/>');
+        $('#main-content').prepend('<i class="icon ion-search search-icon"></i><div class="search-wrapper"><input class="search" placeholder="Search Contacts"/></div>');
         var options = {
             valueNames: [ 'name' ]
         };
